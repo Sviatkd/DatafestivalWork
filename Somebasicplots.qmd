@@ -1,0 +1,31 @@
+---
+title: "Someplots"
+format: pdf
+execute:
+ message: false
+ warning: false
+---
+
+
+```{r}
+library(readr)
+
+# Load HousingPanelwide data
+HousingPanelwide <- read_csv("d:/PositStuff/gmpanel/HousingPanelwide.csv")
+
+ts.plot(cbind(log(HousingPanelwide$`kersal.Local Authority etc`),log(HousingPanelwide$`quays.Local Authority etc`)),col=c("darkgreen","red"),xlab="Census Wave",ylab="log(HousingTenure)",main="Local authority owned tenure 1971-2021 census")
+  legend("bottomleft",legend = c("kersal_log(green)","quays_log(red)"),col=c("darkgreen","red"),bty = "n")
+
+ts.plot(cbind(log(HousingPanelwide$`chettam.Local Authority etc`),log(HousingPanelwide$`ancoats.Local Authority etc`),log(HousingPanelwide$`crumpsall.Local Authority etc`)),col=c("darkgreen","red","darkblue"),xlab="Census Wave",ylab="log(HousingTenure)",main="Local authority owned tenure 1971-2021 census")
+legend("bottomleft",legend = c("chettam_log(green)","ancoats_log(red)","crumpsall_log(blue)"),col=c("darkgreen","red","darkblue"),bty = "n")
+```
+
+```{r}
+EducationPanelwide <- read_csv("d:/PositStuff/gmpanel/EducationPanelwide.csv")
+
+ts.plot(cbind(EducationPanelwide$`kersal.Graduate`/(EducationPanelwide$kersal.Graduate+EducationPanelwide$`kersal.Not graduate`),EducationPanelwide$`quays.Graduate`/(EducationPanelwide$quays.Graduate+EducationPanelwide$`quays.Not graduate`)),col=c("darkgreen","red"),xlab="Census Wave",ylab="%Graduates",main="Graduate education 1971-2021 census")
+  legend("topleft",legend = c("kersal(green)","quays(red)"),col=c("darkgreen","red"),bty = "n")
+
+ts.plot(cbind(EducationPanelwide$`chettam.Graduate`/(EducationPanelwide$chettam.Graduate+EducationPanelwide$`chettam.Not graduate`),EducationPanelwide$`ancoats.Graduate`/(EducationPanelwide$ancoats.Graduate+EducationPanelwide$`ancoats.Not graduate`),EducationPanelwide$`crumpsall.Graduate`/(EducationPanelwide$crumpsall.Graduate+EducationPanelwide$`crumpsall.Not graduate`)),col=c("darkgreen","red","darkblue"),xlab="Census Wave",ylab="%Graduates",main="Graduate education 1971-2021 census")
+legend("topleft",legend = c("chettam(green)","ancoats(red)","crumpsall(blue)"),col=c("darkgreen","red","darkblue"),bty = "n")
+```
