@@ -52,3 +52,5 @@ housingres = cbind(crumpsall=housetablecrump,chettam=housetablechet,kersal=house
 #Make sure to set the correct file path#
 write.csv(educationres,file="D:\\PositStuff\\gmpanel\\EducationPanelwide.csv")
 write.csv(housingres,file="D:\\PositStuff\\gmpanel\\HousingPanelwide.csv")
+#GB Historical GIS / University of Portsmouth, Crumpsall Ward through time | Historical Statistics on Housing | Housing Tenure (Simplified), A Vision of Britain through Time.#
+#Date accessed: 09th October 2026#
