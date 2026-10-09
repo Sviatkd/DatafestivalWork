@@ -6,13 +6,15 @@ execute:
  warning: false
 ---
 
-
 ```{r}
 library(readr)
-
+library(janitor)
+library(tidyverse)
+library(patchwork)
+library(modelsummary)
 # Load HousingPanelwide data
 HousingPanelwide <- read_csv("d:/PositStuff/gmpanel/HousingPanelwide.csv")
-
+par(mfrow=c(1,2))
 ts.plot(cbind(log(HousingPanelwide$`kersal.Local Authority etc`),log(HousingPanelwide$`quays.Local Authority etc`)),col=c("darkgreen","red"),xlab="Census Wave",ylab="log(HousingTenure)",main="Local authority owned tenure 1971-2021 census")
   legend("bottomleft",legend = c("kersal_log(green)","quays_log(red)"),col=c("darkgreen","red"),bty = "n")
 
@@ -22,10 +24,87 @@ legend("bottomleft",legend = c("chettam_log(green)","ancoats_log(red)","crumpsal
 
 ```{r}
 EducationPanelwide <- read_csv("d:/PositStuff/gmpanel/EducationPanelwide.csv")
-
+par(mfrow=c(1,2))
 ts.plot(cbind(EducationPanelwide$`kersal.Graduate`/(EducationPanelwide$kersal.Graduate+EducationPanelwide$`kersal.Not graduate`),EducationPanelwide$`quays.Graduate`/(EducationPanelwide$quays.Graduate+EducationPanelwide$`quays.Not graduate`)),col=c("darkgreen","red"),xlab="Census Wave",ylab="%Graduates",main="Graduate education 1971-2021 census")
   legend("topleft",legend = c("kersal(green)","quays(red)"),col=c("darkgreen","red"),bty = "n")
 
 ts.plot(cbind(EducationPanelwide$`chettam.Graduate`/(EducationPanelwide$chettam.Graduate+EducationPanelwide$`chettam.Not graduate`),EducationPanelwide$`ancoats.Graduate`/(EducationPanelwide$ancoats.Graduate+EducationPanelwide$`ancoats.Not graduate`),EducationPanelwide$`crumpsall.Graduate`/(EducationPanelwide$crumpsall.Graduate+EducationPanelwide$`crumpsall.Not graduate`)),col=c("darkgreen","red","darkblue"),xlab="Census Wave",ylab="%Graduates",main="Graduate education 1971-2021 census")
 legend("topleft",legend = c("chettam(green)","ancoats(red)","crumpsall(blue)"),col=c("darkgreen","red","darkblue"),bty = "n")
+```
+
+
+```{r}
+EducationPanellong <- EducationPanelwide |>
+  # Create a row identifier 
+  mutate(row_id = row_number()) |>
+  
+  
+  pivot_longer(
+    cols = -c(1, row_id),
+    names_to = c("location", "variable"),
+    names_pattern = "^(.*?)\\.(.*)$" #No i do not know how to use pattern matching properly, had to look it up#
+  ) |>
+  
+  # Pivot wider while respecting the row_id and location mapping
+  pivot_wider(
+    id_cols = c(row_id, location),
+    names_from = variable,
+    values_from = value
+  ) |>
+  
+  # 4. Clean up the temporary row_id column
+  select(-row_id) |>
+    janitor::clean_names()
+```
+
+
+```{r}
+HousingPanellong <- HousingPanelwide |>
+  # 1. Create a row identifier so each year stays separate
+  mutate(row_id = row_number()) |>
+  
+  pivot_longer(
+    cols = -c(1, row_id),
+    names_to = c("location", "variable"),
+    names_pattern = "^(.*?)\\.(.*)$"
+  ) |>
+  
+  pivot_wider(
+    id_cols = c(row_id, location),
+    names_from = variable,
+    values_from = value
+  ) |>
+  
+  select(-row_id) |>
+  janitor::clean_names()
+```
+
+
+```{r}
+PanelLong = merge(HousingPanellong,EducationPanellong) |>
+  mutate(gentrified=ifelse(location%in%c("ancoats","quays"),1,0))
+
+```
+
+
+```{r}
+p1=ggplot(PanelLong,aes(x=year,y=graduate/(graduate+not_graduate),colour=location))+geom_line()+ylab("%Graduates")+theme_light()
+p2=ggplot(PanelLong,aes(x=year,y=graduate/(graduate+not_graduate),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Graduates")+theme_dark()
+p2/p1
+p3=ggplot(PanelLong,aes(x=year,y=local_authority_etc/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=location))+geom_line()+ylab("%LocalAuthority")+theme_light()
+p4=ggplot(PanelLong,aes(x=year,y=local_authority_etc/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%LocalAuthority")+theme_dark()
+p4/p3
+p5=ggplot(PanelLong,aes(x=year,y=owner_occupied/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=location))+geom_line()+ylab("%Owner_occupied")+theme_light()
+p6=ggplot(PanelLong,aes(x=year,y=owner_occupied/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Owner_occupied")+theme_dark()
+p6/p5
+p7=ggplot(PanelLong,aes(x=year,y=(other_rented+other_tenures)/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=location))+geom_line()+
+  ylab("%other_rented+tenures")+theme_light()
+p8=ggplot(PanelLong,aes(x=year,y=(other_rented+other_tenures)/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=factor(gentrified)))+
+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%other_rented+tenures")+theme_dark()
+p8/p7
+```
+
+```{r}
+combined_plot = (p4/p3)|(p6/p5)|(p8/p7) + plot_layout(guides = "collect")
+modelsummary::datasummary_skim(PanelLong)
 ```
