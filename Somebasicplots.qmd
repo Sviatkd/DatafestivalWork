@@ -1,6 +1,8 @@
 ---
 title: "Someplots"
-format: pdf
+format: html
+code-fold: true
+code-tools: true
 execute:
  message: false
  warning: false
@@ -107,4 +109,153 @@ p8/p7
 ```{r}
 combined_plot = (p4/p3)|(p6/p5)|(p8/p7) + plot_layout(guides = "collect")
 modelsummary::datasummary_skim(PanelLong)
+```
+
+```{r}
+EducationPanelProp = EducationPanellong |>
+  mutate(GraduateP=graduate/(graduate+not_graduate),
+  NGraduateP = not_graduate/(graduate+not_graduate))
+  HousingPanelProp = HousingPanellong |>
+    mutate(local_authority_etcP=local_authority_etc/(owner_occupied+local_authority_etc+other_rented+other_tenures),
+   owner_occupiedP=owner_occupied/(owner_occupied+local_authority_etc+other_rented+other_tenures),
+    otherrented_tenuresP=(other_rented+other_tenures)/(owner_occupied+local_authority_etc+other_rented+other_tenures))
+    LongPanelProp = merge(EducationPanelProp,HousingPanelProp)
+    LongPanelPropj= select(LongPanelProp,c(location,year,GraduateP,local_authority_etcP,owner_occupiedP, otherrented_tenuresP)) |>
+  mutate(gentrified=ifelse(location%in%c("ancoats","quays"),1,0))
+```
+
+```{r}
+#Simon Rudkin Didn't sponsor this I promise, i just found his posters very pretty and wanted to try and make some too#
+library(BallMapper)
+set.seed(123)
+values = LongPanelPropj$GraduateP
+points =  LongPanelPropj[,c(4,5,6)]
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.01)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
+ballassign = ball$points_covered_by_landmarks
+#Split by gentrificaiion#
+Gentonly = filter(LongPanelPropj,gentrified==1)
+values = Gentonly$GraduateP
+points =  Gentonly[,c(4,5,6)]
+ball1 = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
+
+Gentnot = filter(LongPanelPropj,gentrified==0)
+values = Gentnot$GraduateP
+points =  Gentnot[,c(4,5,6)]
+ball2 = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
+
+ColorIgraphPlot(ball,showLegend = TRUE) + title("Ball Map of Gentrification e=0.17,(Grad%)")
+ColorIgraphPlot(ball1,showLegend = TRUE) + title("Ball Map of Gentrifiying areas e=0.17,(Grad%)")
+ColorIgraphPlot(ball2,showLegend = TRUE) + title("Ball Map of non gentrifying areas e=0.17,(Grad%)")
+```
+
+
+```{r}
+#WARNING AI Generated Code as I am only learning how to properly add unit time labels to Ball Mapper Graphs#
+library(igraph)
+library(ggraph)
+library(ggplot2)
+
+# 1. Number of nodes
+n_nodes <- length(ball$coloring)
+
+# 2. Calculate ball sizes from your ballassign indices
+ball_sizes <- sapply(ball$points_covered_by_landmarks, length)
+
+# 3. Generate unit-time labels for each ball
+node_labels <- sapply(ball$points_covered_by_landmarks, function(indices) {
+  subset_data <- PanelLong[indices, ]
+  paste0(subset_data$location, "-", subset_data$year, collapse = "\n")
+})
+
+# 4. Build the vertices data frame safely
+vertices_df <- data.frame(
+  name = 1:n_nodes,
+  label = node_labels,
+  coloring = ball$coloring,
+  size = ball_sizes
+)
+
+# 5. Create the igraph object
+g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FALSE)
+#Though I did customise the plot below though#
+ggraph(g, layout = "stress") +
+  geom_edge_link(alpha = 0.8, color = "gray60") +
+  geom_node_point(aes(size = size, color = coloring)) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 2.5, color = "black") +
+  scale_color_viridis_c() +
+  theme_light() +
+  labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup withing +-17 percentage points",
+       color = "%Graduates", size = "Ball Size(number of points)") + scale_size_continuous(range = c(2, 5))
+datasummary_skim(LongPanelPropj)      
+```
+
+```{r}
+#My idea is to now  augment the code to create separate plots for gentrified and non gentrified areas
+n_nodes <- length(ball1$coloring)
+
+# 2. Calculate ball sizes from your ballassign indices
+ball_sizes <- sapply(ball1$points_covered_by_landmarks, length)
+
+# 3. Generate unit-time labels for each ball
+node_labels <- sapply(ball1$points_covered_by_landmarks, function(indices) {
+  subset_data <- Gentonly[indices, ]
+  paste0(subset_data$location, "-", subset_data$year, collapse = "\n")
+})
+
+# 4. Build the vertices data frame safely
+vertices_df <- data.frame(
+  name = 1:n_nodes,
+  label = node_labels,
+  coloring = ball1$coloring,
+  size = ball_sizes
+)
+
+# 5. Create the igraph object
+g <- graph_from_data_frame(d = ball1$edges, vertices = vertices_df, directed = FALSE)
+#Though I did customise the plot below though#
+ g1 = ggraph(g, layout = "stress") +
+  geom_edge_link(alpha = 0.8, color = "gray60") +
+  geom_node_point(aes(size = size, color = coloring)) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 6, color = "black") +
+  scale_color_viridis_c() +
+  theme_light() +
+  labs(title = "Ball Mapper Graph of gentrified areas - points in the same ball are closest on housing market makeup withing +-17 percentage points",
+       color = "%Graduates", size = "Ball Size(number of points)") + scale_size_continuous(range = c(4, 10))
+```
+
+```{r}
+
+n_nodes <- length(ball2$coloring)
+
+# 2. Calculate ball sizes from your ballassign indices
+ball_sizes <- sapply(ball2$points_covered_by_landmarks, length)
+
+# 3. Generate unit-time labels for each ball
+node_labels <- sapply(ball2$points_covered_by_landmarks, function(indices) {
+  subset_data <- Gentnot[indices, ]
+  paste0(subset_data$location, "-", subset_data$year, collapse = "\n")
+})
+
+# 4. Build the vertices data frame safely
+vertices_df <- data.frame(
+  name = 1:n_nodes,
+  label = node_labels,
+  coloring = ball2$coloring,
+  size = ball_sizes
+)
+
+# 5. Create the igraph object
+g <- graph_from_data_frame(d = ball2$edges, vertices = vertices_df, directed = FALSE)
+#Though I did customise the plot below though#
+g0 = ggraph(g, layout = "stress") +
+  geom_edge_link(alpha = 0.8, color = "gray60") +
+  geom_node_point(aes(size = size, color = coloring)) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 4, color = "black") +
+  scale_color_viridis_c() +
+  theme_light() +
+  labs(title = "Ball Mapper Graph of non gentrified areas - points in the same ball are closest on housing market makeup withing +-17 percentage points",
+       color = "%Graduates", size = "Ball Size(number of points)") + scale_size_continuous(range = c(4, 10))
+ g1/g0      
+
 ```

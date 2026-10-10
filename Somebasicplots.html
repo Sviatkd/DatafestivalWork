@@ -87,7 +87,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Someplots</h1>
+<div class="quarto-title-block"><div><h1 class="title">Someplots</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -105,6 +105,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -118,6 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ts.plot</span>(<span class="fu">cbind</span>(<span class="fu">log</span>(HousingPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">chettam.Local Authority etc</span><span class="st">`</span>),<span class="fu">log</span>(HousingPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">ancoats.Local Authority etc</span><span class="st">`</span>),<span class="fu">log</span>(HousingPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">crumpsall.Local Authority etc</span><span class="st">`</span>)),<span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkgreen"</span>,<span class="st">"red"</span>,<span class="st">"darkblue"</span>),<span class="at">xlab=</span><span class="st">"Census Wave"</span>,<span class="at">ylab=</span><span class="st">"log(HousingTenure)"</span>,<span class="at">main=</span><span class="st">"Local authority owned tenure 1971-2021 census"</span>)</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomleft"</span>,<span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"chettam_log(green)"</span>,<span class="st">"ancoats_log(red)"</span>,<span class="st">"crumpsall_log(blue)"</span>),<span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkgreen"</span>,<span class="st">"red"</span>,<span class="st">"darkblue"</span>),<span class="at">bty =</span> <span class="st">"n"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -127,6 +130,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>EducationPanelwide <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"d:/PositStuff/gmpanel/EducationPanelwide.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ts.plot</span>(<span class="fu">cbind</span>(EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">kersal.Graduate</span><span class="st">`</span><span class="sc">/</span>(EducationPanelwide<span class="sc">$</span>kersal.Graduate<span class="sc">+</span>EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">kersal.Not graduate</span><span class="st">`</span>),EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">quays.Graduate</span><span class="st">`</span><span class="sc">/</span>(EducationPanelwide<span class="sc">$</span>quays.Graduate<span class="sc">+</span>EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">quays.Not graduate</span><span class="st">`</span>)),<span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkgreen"</span>,<span class="st">"red"</span>),<span class="at">xlab=</span><span class="st">"Census Wave"</span>,<span class="at">ylab=</span><span class="st">"%Graduates"</span>,<span class="at">main=</span><span class="st">"Graduate education 1971-2021 census"</span>)</span>
@@ -134,6 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ts.plot</span>(<span class="fu">cbind</span>(EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">chettam.Graduate</span><span class="st">`</span><span class="sc">/</span>(EducationPanelwide<span class="sc">$</span>chettam.Graduate<span class="sc">+</span>EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">chettam.Not graduate</span><span class="st">`</span>),EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">ancoats.Graduate</span><span class="st">`</span><span class="sc">/</span>(EducationPanelwide<span class="sc">$</span>ancoats.Graduate<span class="sc">+</span>EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">ancoats.Not graduate</span><span class="st">`</span>),EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">crumpsall.Graduate</span><span class="st">`</span><span class="sc">/</span>(EducationPanelwide<span class="sc">$</span>crumpsall.Graduate<span class="sc">+</span>EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">crumpsall.Not graduate</span><span class="st">`</span>)),<span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkgreen"</span>,<span class="st">"red"</span>,<span class="st">"darkblue"</span>),<span class="at">xlab=</span><span class="st">"Census Wave"</span>,<span class="at">ylab=</span><span class="st">"%Graduates"</span>,<span class="at">main=</span><span class="st">"Graduate education 1971-2021 census"</span>)</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>,<span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"chettam(green)"</span>,<span class="st">"ancoats(red)"</span>,<span class="st">"crumpsall(blue)"</span>),<span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkgreen"</span>,<span class="st">"red"</span>,<span class="st">"darkblue"</span>),<span class="at">bty =</span> <span class="st">"n"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -143,6 +149,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>EducationPanellong <span class="ot">&lt;-</span> EducationPanelwide <span class="sc">|&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a row identifier </span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">row_id =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span></span>
@@ -164,8 +172,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 4. Clean up the temporary row_id column</span></span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>row_id) <span class="sc">|&gt;</span></span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>HousingPanellong <span class="ot">&lt;-</span> HousingPanelwide <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Create a row identifier so each year stays separate</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">row_id =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span></span>
@@ -184,15 +195,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>row_id) <span class="sc">|&gt;</span></span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>PanelLong <span class="ot">=</span> <span class="fu">merge</span>(HousingPanellong,EducationPanellong) <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gentrified=</span><span class="fu">ifelse</span>(location<span class="sc">%in%</span><span class="fu">c</span>(<span class="st">"ancoats"</span>,<span class="st">"quays"</span>),<span class="dv">1</span>,<span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p1<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>graduate<span class="sc">/</span>(graduate<span class="sc">+</span>not_graduate),<span class="at">colour=</span>location))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"%Graduates"</span>)<span class="sc">+</span><span class="fu">theme_light</span>()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>p2<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>graduate<span class="sc">/</span>(graduate<span class="sc">+</span>not_graduate),<span class="at">colour=</span><span class="fu">factor</span>(gentrified)))<span class="sc">+</span><span class="fu">stat_summary</span>(<span class="at">fun=</span>mean,<span class="at">geom=</span><span class="st">"line"</span>)<span class="sc">+</span><span class="fu">geom_jitter</span>()<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"%Graduates"</span>)<span class="sc">+</span><span class="fu">theme_dark</span>()</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>p2<span class="sc">/</span>p1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -200,9 +218,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>p3<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>local_authority_etc<span class="sc">/</span>(owner_occupied<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures<span class="sc">+</span>local_authority_etc),<span class="at">colour=</span>location))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"%LocalAuthority"</span>)<span class="sc">+</span><span class="fu">theme_light</span>()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>p4<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>local_authority_etc<span class="sc">/</span>(owner_occupied<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures<span class="sc">+</span>local_authority_etc),<span class="at">colour=</span><span class="fu">factor</span>(gentrified)))<span class="sc">+</span><span class="fu">stat_summary</span>(<span class="at">fun=</span>mean,<span class="at">geom=</span><span class="st">"line"</span>)<span class="sc">+</span><span class="fu">geom_jitter</span>()<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"%LocalAuthority"</span>)<span class="sc">+</span><span class="fu">theme_dark</span>()</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>p4<span class="sc">/</span>p3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -210,9 +231,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>p5<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>owner_occupied<span class="sc">/</span>(owner_occupied<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures<span class="sc">+</span>local_authority_etc),<span class="at">colour=</span>location))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"%Owner_occupied"</span>)<span class="sc">+</span><span class="fu">theme_light</span>()</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>p6<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>owner_occupied<span class="sc">/</span>(owner_occupied<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures<span class="sc">+</span>local_authority_etc),<span class="at">colour=</span><span class="fu">factor</span>(gentrified)))<span class="sc">+</span><span class="fu">stat_summary</span>(<span class="at">fun=</span>mean,<span class="at">geom=</span><span class="st">"line"</span>)<span class="sc">+</span><span class="fu">geom_jitter</span>()<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"%Owner_occupied"</span>)<span class="sc">+</span><span class="fu">theme_dark</span>()</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>p6<span class="sc">/</span>p5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -220,11 +244,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </div>
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>p7<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>(other_rented<span class="sc">+</span>other_tenures)<span class="sc">/</span>(owner_occupied<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures<span class="sc">+</span>local_authority_etc),<span class="at">colour=</span>location))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"%other_rented+tenures"</span>)<span class="sc">+</span><span class="fu">theme_light</span>()</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>p8<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>(other_rented<span class="sc">+</span>other_tenures)<span class="sc">/</span>(owner_occupied<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures<span class="sc">+</span>local_authority_etc),<span class="at">colour=</span><span class="fu">factor</span>(gentrified)))<span class="sc">+</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">stat_summary</span>(<span class="at">fun=</span>mean,<span class="at">geom=</span><span class="st">"line"</span>)<span class="sc">+</span><span class="fu">geom_jitter</span>()<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"%other_rented+tenures"</span>)<span class="sc">+</span><span class="fu">theme_dark</span>()</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>p8<span class="sc">/</span>p7</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -234,27 +261,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">=</span> (p4<span class="sc">/</span>p3)<span class="sc">|</span>(p6<span class="sc">/</span>p5)<span class="sc">|</span>(p8<span class="sc">/</span>p7) <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">datasummary_skim</span>(PanelLong)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 <div class="cell-output-display">
 <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_n0j8ivv6xekimrjj4y3l = TinyTable.createTableFunctions("tinytable_n0j8ivv6xekimrjj4y3l");
+      const tableFns_8ggka0xy1d8rgpayab3v = TinyTable.createTableFunctions("tinytable_8ggka0xy1d8rgpayab3v");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '14', j: 1 }, { i: '14', j: 2 }, { i: '14', j: 3 }, { i: '14', j: 4 }, { i: '14', j: 5 }, { i: '14', j: 6 }, { i: '14', j: 7 }, { i: '14', j: 8 }, { i: '14', j: 9 } ], css_id: 'tinytable_css_35ujp6hxp73ixvjwlxmr',}, 
-          { positions: [ { i: '9', j: 1 }, { i: '9', j: 2 }, { i: '9', j: 3 }, { i: '9', j: 4 }, { i: '9', j: 5 }, { i: '9', j: 6 }, { i: '9', j: 7 }, { i: '9', j: 8 }, { i: '9', j: 9 } ], css_id: 'tinytable_css_pvgat6luw4vkj5ieylz2',}, 
-          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 }, { i: '0', j: 8 }, { i: '0', j: 9 } ], css_id: 'tinytable_css_3pqays37ihy3iaqh42b7',}, 
+          { positions: [ { i: '14', j: 1 }, { i: '14', j: 2 }, { i: '14', j: 3 }, { i: '14', j: 4 }, { i: '14', j: 5 }, { i: '14', j: 6 }, { i: '14', j: 7 }, { i: '14', j: 8 }, { i: '14', j: 9 } ], css_id: 'tinytable_css_7z9psw0sa8kxls438xot',}, 
+          { positions: [ { i: '9', j: 1 }, { i: '9', j: 2 }, { i: '9', j: 3 }, { i: '9', j: 4 }, { i: '9', j: 5 }, { i: '9', j: 6 }, { i: '9', j: 7 }, { i: '9', j: 8 }, { i: '9', j: 9 } ], css_id: 'tinytable_css_hdxzcwl8sdq7q5n7uen4',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 }, { i: '0', j: 8 }, { i: '0', j: 9 } ], css_id: 'tinytable_css_pqtm2gzu5byksw5ettle',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_n0j8ivv6xekimrjj4y3l.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_8ggka0xy1d8rgpayab3v.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -263,12 +293,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_n0j8ivv6xekimrjj4y3l td.tinytable_css_35ujp6hxp73ixvjwlxmr, #tinytable_n0j8ivv6xekimrjj4y3l th.tinytable_css_35ujp6hxp73ixvjwlxmr {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
-    #tinytable_n0j8ivv6xekimrjj4y3l td.tinytable_css_pvgat6luw4vkj5ieylz2, #tinytable_n0j8ivv6xekimrjj4y3l th.tinytable_css_pvgat6luw4vkj5ieylz2 {  position: relative; --border-bottom: 0; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
-    #tinytable_n0j8ivv6xekimrjj4y3l td.tinytable_css_3pqays37ihy3iaqh42b7, #tinytable_n0j8ivv6xekimrjj4y3l th.tinytable_css_3pqays37ihy3iaqh42b7 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_8ggka0xy1d8rgpayab3v td.tinytable_css_7z9psw0sa8kxls438xot, #tinytable_8ggka0xy1d8rgpayab3v th.tinytable_css_7z9psw0sa8kxls438xot {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_8ggka0xy1d8rgpayab3v td.tinytable_css_hdxzcwl8sdq7q5n7uen4, #tinytable_8ggka0xy1d8rgpayab3v th.tinytable_css_hdxzcwl8sdq7q5n7uen4 {  position: relative; --border-bottom: 0; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_8ggka0xy1d8rgpayab3v td.tinytable_css_pqtm2gzu5byksw5ettle, #tinytable_8ggka0xy1d8rgpayab3v th.tinytable_css_pqtm2gzu5byksw5ettle {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_n0j8ivv6xekimrjj4y3l" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_8ggka0xy1d8rgpayab3v" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>
@@ -445,6 +475,403 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- hack to avoid NA insertion in last line -->
 </div>
 </div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>EducationPanelProp <span class="ot">=</span> EducationPanellong <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">GraduateP=</span>graduate<span class="sc">/</span>(graduate<span class="sc">+</span>not_graduate),</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">NGraduateP =</span> not_graduate<span class="sc">/</span>(graduate<span class="sc">+</span>not_graduate))</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  HousingPanelProp <span class="ot">=</span> HousingPanellong <span class="sc">|&gt;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">local_authority_etcP=</span>local_authority_etc<span class="sc">/</span>(owner_occupied<span class="sc">+</span>local_authority_etc<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">owner_occupiedP=</span>owner_occupied<span class="sc">/</span>(owner_occupied<span class="sc">+</span>local_authority_etc<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures),</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">otherrented_tenuresP=</span>(other_rented<span class="sc">+</span>other_tenures)<span class="sc">/</span>(owner_occupied<span class="sc">+</span>local_authority_etc<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures))</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    LongPanelProp <span class="ot">=</span> <span class="fu">merge</span>(EducationPanelProp,HousingPanelProp)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    LongPanelPropj<span class="ot">=</span> <span class="fu">select</span>(LongPanelProp,<span class="fu">c</span>(location,year,GraduateP,local_authority_etcP,owner_occupiedP, otherrented_tenuresP)) <span class="sc">|&gt;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gentrified=</span><span class="fu">ifelse</span>(location<span class="sc">%in%</span><span class="fu">c</span>(<span class="st">"ancoats"</span>,<span class="st">"quays"</span>),<span class="dv">1</span>,<span class="dv">0</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Simon Rudkin Didn't sponsor this I promise, i just found his posters very pretty and wanted to try and make some too#</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BallMapper)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>values <span class="ot">=</span> LongPanelPropj<span class="sc">$</span>GraduateP</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>points <span class="ot">=</span>  LongPanelPropj[,<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)]</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ball <span class="ot">=</span> BallMapper<span class="sc">::</span><span class="fu">BallMapper</span>(<span class="fu">as.data.frame</span>(points),<span class="fu">as.data.frame</span>(values),<span class="at">epsilon =</span> <span class="fl">0.01</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>ball <span class="ot">=</span> BallMapper<span class="sc">::</span><span class="fu">BallMapper</span>(<span class="fu">as.data.frame</span>(points),<span class="fu">as.data.frame</span>(values),<span class="at">epsilon =</span> <span class="fl">0.17</span>) <span class="co">#epsilon 0.17 seems to preserve the complexity in the best way</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>ballassign <span class="ot">=</span> ball<span class="sc">$</span>points_covered_by_landmarks</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Split by gentrificaiion#</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>Gentonly <span class="ot">=</span> <span class="fu">filter</span>(LongPanelPropj,gentrified<span class="sc">==</span><span class="dv">1</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>values <span class="ot">=</span> Gentonly<span class="sc">$</span>GraduateP</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>points <span class="ot">=</span>  Gentonly[,<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)]</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>ball1 <span class="ot">=</span> BallMapper<span class="sc">::</span><span class="fu">BallMapper</span>(<span class="fu">as.data.frame</span>(points),<span class="fu">as.data.frame</span>(values),<span class="at">epsilon =</span> <span class="fl">0.17</span>) <span class="co">#epsilon 0.17 seems to preserve the complexity in the best way</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>Gentnot <span class="ot">=</span> <span class="fu">filter</span>(LongPanelPropj,gentrified<span class="sc">==</span><span class="dv">0</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>values <span class="ot">=</span> Gentnot<span class="sc">$</span>GraduateP</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>points <span class="ot">=</span>  Gentnot[,<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)]</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>ball2 <span class="ot">=</span> BallMapper<span class="sc">::</span><span class="fu">BallMapper</span>(<span class="fu">as.data.frame</span>(points),<span class="fu">as.data.frame</span>(values),<span class="at">epsilon =</span> <span class="fl">0.17</span>) <span class="co">#epsilon 0.17 seems to preserve the complexity in the best way</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ColorIgraphPlot</span>(ball,<span class="at">showLegend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> <span class="fu">title</span>(<span class="st">"Ball Map of Gentrification e=0.17,(Grad%)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Somebasicplots_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>integer(0)</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ColorIgraphPlot</span>(ball1,<span class="at">showLegend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> <span class="fu">title</span>(<span class="st">"Ball Map of Gentrifiying areas e=0.17,(Grad%)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Somebasicplots_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>integer(0)</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ColorIgraphPlot</span>(ball2,<span class="at">showLegend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> <span class="fu">title</span>(<span class="st">"Ball Map of non gentrifying areas e=0.17,(Grad%)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Somebasicplots_files/figure-html/unnamed-chunk-9-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>integer(0)</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#WARNING AI Generated Code as I am only learning how to properly add unit time labels to Ball Mapper Graphs#</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Number of nodes</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>n_nodes <span class="ot">&lt;-</span> <span class="fu">length</span>(ball<span class="sc">$</span>coloring)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Calculate ball sizes from your ballassign indices</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>ball_sizes <span class="ot">&lt;-</span> <span class="fu">sapply</span>(ball<span class="sc">$</span>points_covered_by_landmarks, length)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Generate unit-time labels for each ball</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>node_labels <span class="ot">&lt;-</span> <span class="fu">sapply</span>(ball<span class="sc">$</span>points_covered_by_landmarks, <span class="cf">function</span>(indices) {</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>  subset_data <span class="ot">&lt;-</span> PanelLong[indices, ]</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(subset_data<span class="sc">$</span>location, <span class="st">"-"</span>, subset_data<span class="sc">$</span>year, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Build the vertices data frame safely</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>vertices_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="dv">1</span><span class="sc">:</span>n_nodes,</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> node_labels,</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">coloring =</span> ball<span class="sc">$</span>coloring,</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> ball_sizes</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Create the igraph object</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(<span class="at">d =</span> ball<span class="sc">$</span>edges, <span class="at">vertices =</span> vertices_df, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="co">#Though I did customise the plot below though#</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">color =</span> <span class="st">"gray60"</span>) <span class="sc">+</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> size, <span class="at">color =</span> coloring)) <span class="sc">+</span></span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup withing +-17 percentage points"</span>,</span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"%Graduates"</span>, <span class="at">size =</span> <span class="st">"Ball Size(number of points)"</span>) <span class="sc">+</span> <span class="fu">scale_size_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Somebasicplots_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary_skim</span>(LongPanelPropj)      </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_pqhkr7lq86f25iduqbb9 = TinyTable.createTableFunctions("tinytable_pqhkr7lq86f25iduqbb9");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '12', j: 1 }, { i: '12', j: 2 }, { i: '12', j: 3 }, { i: '12', j: 4 }, { i: '12', j: 5 }, { i: '12', j: 6 }, { i: '12', j: 7 }, { i: '12', j: 8 }, { i: '12', j: 9 } ], css_id: 'tinytable_css_cdec0xatrdnqn3bkm3wv',}, 
+          { positions: [ { i: '7', j: 1 }, { i: '7', j: 2 }, { i: '7', j: 3 }, { i: '7', j: 4 }, { i: '7', j: 5 }, { i: '7', j: 6 }, { i: '7', j: 7 }, { i: '7', j: 8 }, { i: '7', j: 9 } ], css_id: 'tinytable_css_fi7es6axypc15pq9ci5a',}, 
+          { positions: [ { i: '0', j: 1 }, { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 }, { i: '0', j: 7 }, { i: '0', j: 8 }, { i: '0', j: 9 } ], css_id: 'tinytable_css_g6lbybok8y0kokb8zf8z',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_pqhkr7lq86f25iduqbb9.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_pqhkr7lq86f25iduqbb9 td.tinytable_css_cdec0xatrdnqn3bkm3wv, #tinytable_pqhkr7lq86f25iduqbb9 th.tinytable_css_cdec0xatrdnqn3bkm3wv {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_pqhkr7lq86f25iduqbb9 td.tinytable_css_fi7es6axypc15pq9ci5a, #tinytable_pqhkr7lq86f25iduqbb9 th.tinytable_css_fi7es6axypc15pq9ci5a {  position: relative; --border-bottom: 0; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    #tinytable_pqhkr7lq86f25iduqbb9 td.tinytable_css_g6lbybok8y0kokb8zf8z, #tinytable_pqhkr7lq86f25iduqbb9 th.tinytable_css_g6lbybok8y0kokb8zf8z {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --line-type-bottom: solid; --line-type-left: solid; --line-type-right: solid; --line-type-top: solid; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%;  }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_pqhkr7lq86f25iduqbb9" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1"> </th>
+                <th scope="col" data-row="0" data-col="2">Unique</th>
+                <th scope="col" data-row="0" data-col="3">Missing Pct.</th>
+                <th scope="col" data-row="0" data-col="4">Mean</th>
+                <th scope="col" data-row="0" data-col="5">SD</th>
+                <th scope="col" data-row="0" data-col="6">Min</th>
+                <th scope="col" data-row="0" data-col="7">Median</th>
+                <th scope="col" data-row="0" data-col="8">Max</th>
+                <th scope="col" data-row="0" data-col="9">Histogram</th>
+              </tr>
+        </thead>
+        
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">year</td>
+                  <td data-row="1" data-col="2">6</td>
+                  <td data-row="1" data-col="3">0</td>
+                  <td data-row="1" data-col="4">1996.0</td>
+                  <td data-row="1" data-col="5">17.4</td>
+                  <td data-row="1" data-col="6">1971.0</td>
+                  <td data-row="1" data-col="7">1996.0</td>
+                  <td data-row="1" data-col="8">2021.0</td>
+                  <td data-row="1" data-col="9"><img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAABLAAAAGQCAMAAACJa2lsAAAABlBMVEUAAAD///+l2Z/dAAAFNUlEQVR4nO3UwQnAMAzAQHf/pbNCCw1GcDeBXpoHIGK2AwDeMiwgw7CADMMCMgwLyDAsIMOwgAzDAjIMC8gwLCDDsIAMwwIyDAvI+DSsAfiZYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBhWECGYQEZhgVkGBaQYVhAhmEBGYYFZBgWkGFYQIZhARmGBWQYFpBxbVgAmwwLyDAsIMOwgAzDAjIMC8gwLCDDsIAMwwIyDAvIMCwgw7CADMMCMgwLyDgfRQMwkIluXwAAAABJRU5ErkJggg==" style="height: 1em;"></td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1">GraduateP</td>
+                  <td data-row="2" data-col="2">30</td>
+                  <td data-row="2" data-col="3">0</td>
+                  <td data-row="2" data-col="4">0.2</td>
+                  <td data-row="2" data-col="5">0.2</td>
+                  <td data-row="2" data-col="6">0.0</td>
+                  <td data-row="2" data-col="7">0.1</td>
+                  <td data-row="2" data-col="8">0.8</td>
+                  <td data-row="2" data-col="9"><img src="data:image/png;base64, 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" style="height: 1em;"></td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">local_authority_etcP</td>
+                  <td data-row="3" data-col="2">30</td>
+                  <td data-row="3" data-col="3">0</td>
+                  <td data-row="3" data-col="4">0.2</td>
+                  <td data-row="3" data-col="5">0.2</td>
+                  <td data-row="3" data-col="6">0.0</td>
+                  <td data-row="3" data-col="7">0.1</td>
+                  <td data-row="3" data-col="8">0.9</td>
+                  <td data-row="3" data-col="9"><img src="data:image/png;base64, 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" style="height: 1em;"></td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="1">owner_occupiedP</td>
+                  <td data-row="4" data-col="2">30</td>
+                  <td data-row="4" data-col="3">0</td>
+                  <td data-row="4" data-col="4">0.4</td>
+                  <td data-row="4" data-col="5">0.2</td>
+                  <td data-row="4" data-col="6">0.1</td>
+                  <td data-row="4" data-col="7">0.4</td>
+                  <td data-row="4" data-col="8">0.6</td>
+                  <td data-row="4" data-col="9"><img src="data:image/png;base64, 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" style="height: 1em;"></td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="1">otherrented_tenuresP</td>
+                  <td data-row="5" data-col="2">30</td>
+                  <td data-row="5" data-col="3">0</td>
+                  <td data-row="5" data-col="4">0.4</td>
+                  <td data-row="5" data-col="5">0.2</td>
+                  <td data-row="5" data-col="6">0.1</td>
+                  <td data-row="5" data-col="7">0.4</td>
+                  <td data-row="5" data-col="8">0.8</td>
+                  <td data-row="5" data-col="9"><img src="data:image/png;base64, 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" style="height: 1em;"></td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="1">gentrified</td>
+                  <td data-row="6" data-col="2">2</td>
+                  <td data-row="6" data-col="3">0</td>
+                  <td data-row="6" data-col="4">0.4</td>
+                  <td data-row="6" data-col="5">0.5</td>
+                  <td data-row="6" data-col="6">0.0</td>
+                  <td data-row="6" data-col="7">0.0</td>
+                  <td data-row="6" data-col="8">1.0</td>
+                  <td data-row="6" data-col="9"><img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAABLAAAAGQCAMAAACJa2lsAAAABlBMVEUAAAD///+l2Z/dAAAOhUlEQVR4nO3UQQ5kNwxDwcn9L52d/jbEmBI6qDqB8SD6zz8AP+LP9QMA/isfFvAzfFjAz/BhAT/DhwX8DB8W8DN8WMDP8GEBP8OHBfwMHxbwM3xYwM/wYQE/w4cF/Izow/rz/9ZqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDDziw/q0GgOP+LA+rcbAIz6sT6sx8IgP69NqDH/nehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdRnZEsOV6GWVRCt1GdkSw5XoZZVEK3UZ2RLDlehllUQrdgEu1Dwvgkg8L+Bk+LOBn+LCAn+HDAn6GDwv4GT4s4Gf4sICf4cMCfoYPC/gZPizgZ/iwgJ/hwwJ+hg8L+Bn/Am0VNJ5QBef5AAAAAElFTkSuQmCC" style="height: 1em;"></td>
+                </tr>
+                <tr>
+                  <td data-row="7" data-col="1">location</td>
+                  <td data-row="7" data-col="2">N</td>
+                  <td data-row="7" data-col="3">%</td>
+                  <td data-row="7" data-col="4"> </td>
+                  <td data-row="7" data-col="5"> </td>
+                  <td data-row="7" data-col="6"> </td>
+                  <td data-row="7" data-col="7"> </td>
+                  <td data-row="7" data-col="8"> </td>
+                  <td data-row="7" data-col="9"> </td>
+                </tr>
+                <tr>
+                  <td data-row="8" data-col="1">ancoats</td>
+                  <td data-row="8" data-col="2">6</td>
+                  <td data-row="8" data-col="3">20.0</td>
+                  <td data-row="8" data-col="4"> </td>
+                  <td data-row="8" data-col="5"> </td>
+                  <td data-row="8" data-col="6"> </td>
+                  <td data-row="8" data-col="7"> </td>
+                  <td data-row="8" data-col="8"> </td>
+                  <td data-row="8" data-col="9"> </td>
+                </tr>
+                <tr>
+                  <td data-row="9" data-col="1">chettam</td>
+                  <td data-row="9" data-col="2">6</td>
+                  <td data-row="9" data-col="3">20.0</td>
+                  <td data-row="9" data-col="4"> </td>
+                  <td data-row="9" data-col="5"> </td>
+                  <td data-row="9" data-col="6"> </td>
+                  <td data-row="9" data-col="7"> </td>
+                  <td data-row="9" data-col="8"> </td>
+                  <td data-row="9" data-col="9"> </td>
+                </tr>
+                <tr>
+                  <td data-row="10" data-col="1">crumpsall</td>
+                  <td data-row="10" data-col="2">6</td>
+                  <td data-row="10" data-col="3">20.0</td>
+                  <td data-row="10" data-col="4"> </td>
+                  <td data-row="10" data-col="5"> </td>
+                  <td data-row="10" data-col="6"> </td>
+                  <td data-row="10" data-col="7"> </td>
+                  <td data-row="10" data-col="8"> </td>
+                  <td data-row="10" data-col="9"> </td>
+                </tr>
+                <tr>
+                  <td data-row="11" data-col="1">kersal</td>
+                  <td data-row="11" data-col="2">6</td>
+                  <td data-row="11" data-col="3">20.0</td>
+                  <td data-row="11" data-col="4"> </td>
+                  <td data-row="11" data-col="5"> </td>
+                  <td data-row="11" data-col="6"> </td>
+                  <td data-row="11" data-col="7"> </td>
+                  <td data-row="11" data-col="8"> </td>
+                  <td data-row="11" data-col="9"> </td>
+                </tr>
+                <tr>
+                  <td data-row="12" data-col="1">quays</td>
+                  <td data-row="12" data-col="2">6</td>
+                  <td data-row="12" data-col="3">20.0</td>
+                  <td data-row="12" data-col="4"> </td>
+                  <td data-row="12" data-col="5"> </td>
+                  <td data-row="12" data-col="6"> </td>
+                  <td data-row="12" data-col="7"> </td>
+                  <td data-row="12" data-col="8"> </td>
+                  <td data-row="12" data-col="9"> </td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#My idea is to now  augment the code to create separate plots for gentrified and non gentrified areas</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>n_nodes <span class="ot">&lt;-</span> <span class="fu">length</span>(ball1<span class="sc">$</span>coloring)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Calculate ball sizes from your ballassign indices</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>ball_sizes <span class="ot">&lt;-</span> <span class="fu">sapply</span>(ball1<span class="sc">$</span>points_covered_by_landmarks, length)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Generate unit-time labels for each ball</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>node_labels <span class="ot">&lt;-</span> <span class="fu">sapply</span>(ball1<span class="sc">$</span>points_covered_by_landmarks, <span class="cf">function</span>(indices) {</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  subset_data <span class="ot">&lt;-</span> Gentonly[indices, ]</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(subset_data<span class="sc">$</span>location, <span class="st">"-"</span>, subset_data<span class="sc">$</span>year, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Build the vertices data frame safely</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>vertices_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="dv">1</span><span class="sc">:</span>n_nodes,</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> node_labels,</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">coloring =</span> ball1<span class="sc">$</span>coloring,</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> ball_sizes</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Create the igraph object</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(<span class="at">d =</span> ball1<span class="sc">$</span>edges, <span class="at">vertices =</span> vertices_df, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="co">#Though I did customise the plot below though#</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a> g1 <span class="ot">=</span> <span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">color =</span> <span class="st">"gray60"</span>) <span class="sc">+</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> size, <span class="at">color =</span> coloring)) <span class="sc">+</span></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ball Mapper Graph of gentrified areas - points in the same ball are closest on housing market makeup withing +-17 percentage points"</span>,</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"%Graduates"</span>, <span class="at">size =</span> <span class="st">"Ball Size(number of points)"</span>) <span class="sc">+</span> <span class="fu">scale_size_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">10</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>n_nodes <span class="ot">&lt;-</span> <span class="fu">length</span>(ball2<span class="sc">$</span>coloring)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Calculate ball sizes from your ballassign indices</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>ball_sizes <span class="ot">&lt;-</span> <span class="fu">sapply</span>(ball2<span class="sc">$</span>points_covered_by_landmarks, length)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Generate unit-time labels for each ball</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>node_labels <span class="ot">&lt;-</span> <span class="fu">sapply</span>(ball2<span class="sc">$</span>points_covered_by_landmarks, <span class="cf">function</span>(indices) {</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  subset_data <span class="ot">&lt;-</span> Gentnot[indices, ]</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(subset_data<span class="sc">$</span>location, <span class="st">"-"</span>, subset_data<span class="sc">$</span>year, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Build the vertices data frame safely</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>vertices_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="dv">1</span><span class="sc">:</span>n_nodes,</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> node_labels,</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">coloring =</span> ball2<span class="sc">$</span>coloring,</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> ball_sizes</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Create the igraph object</span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(<span class="at">d =</span> ball2<span class="sc">$</span>edges, <span class="at">vertices =</span> vertices_df, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a><span class="co">#Though I did customise the plot below though#</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>g0 <span class="ot">=</span> <span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">color =</span> <span class="st">"gray60"</span>) <span class="sc">+</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> size, <span class="at">color =</span> coloring)) <span class="sc">+</span></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ball Mapper Graph of non gentrified areas - points in the same ball are closest on housing market makeup withing +-17 percentage points"</span>,</span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"%Graduates"</span>, <span class="at">size =</span> <span class="st">"Ball Size(number of points)"</span>) <span class="sc">+</span> <span class="fu">scale_size_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">10</span>))</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a> g1<span class="sc">/</span>g0      </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Somebasicplots_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- -->
+
 
 </main>
 <!-- /main column -->
@@ -518,6 +945,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -847,7 +1325,269 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       }
     }
   });
-  </script>
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Someplots"</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> true</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"> message: false</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"> warning: false</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Load HousingPanelwide data</span></span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>HousingPanelwide <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"d:/PositStuff/gmpanel/HousingPanelwide.csv"</span>)</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="fu">ts.plot</span>(<span class="fu">cbind</span>(<span class="fu">log</span>(HousingPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">kersal.Local Authority etc</span><span class="st">`</span>),<span class="fu">log</span>(HousingPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">quays.Local Authority etc</span><span class="st">`</span>)),<span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkgreen"</span>,<span class="st">"red"</span>),<span class="at">xlab=</span><span class="st">"Census Wave"</span>,<span class="at">ylab=</span><span class="st">"log(HousingTenure)"</span>,<span class="at">main=</span><span class="st">"Local authority owned tenure 1971-2021 census"</span>)</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">legend</span>(<span class="st">"bottomleft"</span>,<span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"kersal_log(green)"</span>,<span class="st">"quays_log(red)"</span>),<span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkgreen"</span>,<span class="st">"red"</span>),<span class="at">bty =</span> <span class="st">"n"</span>)</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="fu">ts.plot</span>(<span class="fu">cbind</span>(<span class="fu">log</span>(HousingPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">chettam.Local Authority etc</span><span class="st">`</span>),<span class="fu">log</span>(HousingPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">ancoats.Local Authority etc</span><span class="st">`</span>),<span class="fu">log</span>(HousingPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">crumpsall.Local Authority etc</span><span class="st">`</span>)),<span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkgreen"</span>,<span class="st">"red"</span>,<span class="st">"darkblue"</span>),<span class="at">xlab=</span><span class="st">"Census Wave"</span>,<span class="at">ylab=</span><span class="st">"log(HousingTenure)"</span>,<span class="at">main=</span><span class="st">"Local authority owned tenure 1971-2021 census"</span>)</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomleft"</span>,<span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"chettam_log(green)"</span>,<span class="st">"ancoats_log(red)"</span>,<span class="st">"crumpsall_log(blue)"</span>),<span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkgreen"</span>,<span class="st">"red"</span>,<span class="st">"darkblue"</span>),<span class="at">bty =</span> <span class="st">"n"</span>)</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a>EducationPanelwide <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"d:/PositStuff/gmpanel/EducationPanelwide.csv"</span>)</span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a><span class="fu">ts.plot</span>(<span class="fu">cbind</span>(EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">kersal.Graduate</span><span class="st">`</span><span class="sc">/</span>(EducationPanelwide<span class="sc">$</span>kersal.Graduate<span class="sc">+</span>EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">kersal.Not graduate</span><span class="st">`</span>),EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">quays.Graduate</span><span class="st">`</span><span class="sc">/</span>(EducationPanelwide<span class="sc">$</span>quays.Graduate<span class="sc">+</span>EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">quays.Not graduate</span><span class="st">`</span>)),<span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkgreen"</span>,<span class="st">"red"</span>),<span class="at">xlab=</span><span class="st">"Census Wave"</span>,<span class="at">ylab=</span><span class="st">"%Graduates"</span>,<span class="at">main=</span><span class="st">"Graduate education 1971-2021 census"</span>)</span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">legend</span>(<span class="st">"topleft"</span>,<span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"kersal(green)"</span>,<span class="st">"quays(red)"</span>),<span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkgreen"</span>,<span class="st">"red"</span>),<span class="at">bty =</span> <span class="st">"n"</span>)</span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a><span class="fu">ts.plot</span>(<span class="fu">cbind</span>(EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">chettam.Graduate</span><span class="st">`</span><span class="sc">/</span>(EducationPanelwide<span class="sc">$</span>chettam.Graduate<span class="sc">+</span>EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">chettam.Not graduate</span><span class="st">`</span>),EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">ancoats.Graduate</span><span class="st">`</span><span class="sc">/</span>(EducationPanelwide<span class="sc">$</span>ancoats.Graduate<span class="sc">+</span>EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">ancoats.Not graduate</span><span class="st">`</span>),EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">crumpsall.Graduate</span><span class="st">`</span><span class="sc">/</span>(EducationPanelwide<span class="sc">$</span>crumpsall.Graduate<span class="sc">+</span>EducationPanelwide<span class="sc">$</span><span class="st">`</span><span class="at">crumpsall.Not graduate</span><span class="st">`</span>)),<span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkgreen"</span>,<span class="st">"red"</span>,<span class="st">"darkblue"</span>),<span class="at">xlab=</span><span class="st">"Census Wave"</span>,<span class="at">ylab=</span><span class="st">"%Graduates"</span>,<span class="at">main=</span><span class="st">"Graduate education 1971-2021 census"</span>)</span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>,<span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"chettam(green)"</span>,<span class="st">"ancoats(red)"</span>,<span class="st">"crumpsall(blue)"</span>),<span class="at">col=</span><span class="fu">c</span>(<span class="st">"darkgreen"</span>,<span class="st">"red"</span>,<span class="st">"darkblue"</span>),<span class="at">bty =</span> <span class="st">"n"</span>)</span>
+<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a>EducationPanellong <span class="ot">&lt;-</span> EducationPanelwide <span class="sc">|&gt;</span></span>
+<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Create a row identifier </span></span>
+<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">row_id =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb22-48"><a href="#cb22-48" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-49"><a href="#cb22-49" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-50"><a href="#cb22-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb22-51"><a href="#cb22-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, row_id),</span>
+<span id="cb22-52"><a href="#cb22-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"location"</span>, <span class="st">"variable"</span>),</span>
+<span id="cb22-53"><a href="#cb22-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_pattern =</span> <span class="st">"^(.*?)</span><span class="sc">\\</span><span class="st">.(.*)$"</span> <span class="co">#No i do not know how to use pattern matching properly, had to look it up#</span></span>
+<span id="cb22-54"><a href="#cb22-54" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb22-55"><a href="#cb22-55" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-56"><a href="#cb22-56" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Pivot wider while respecting the row_id and location mapping</span></span>
+<span id="cb22-57"><a href="#cb22-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb22-58"><a href="#cb22-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">id_cols =</span> <span class="fu">c</span>(row_id, location),</span>
+<span id="cb22-59"><a href="#cb22-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> variable,</span>
+<span id="cb22-60"><a href="#cb22-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> value</span>
+<span id="cb22-61"><a href="#cb22-61" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb22-62"><a href="#cb22-62" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-63"><a href="#cb22-63" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 4. Clean up the temporary row_id column</span></span>
+<span id="cb22-64"><a href="#cb22-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>row_id) <span class="sc">|&gt;</span></span>
+<span id="cb22-65"><a href="#cb22-65" aria-hidden="true" tabindex="-1"></a>    janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb22-66"><a href="#cb22-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-67"><a href="#cb22-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-68"><a href="#cb22-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-71"><a href="#cb22-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-72"><a href="#cb22-72" aria-hidden="true" tabindex="-1"></a>HousingPanellong <span class="ot">&lt;-</span> HousingPanelwide <span class="sc">|&gt;</span></span>
+<span id="cb22-73"><a href="#cb22-73" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Create a row identifier so each year stays separate</span></span>
+<span id="cb22-74"><a href="#cb22-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">row_id =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb22-75"><a href="#cb22-75" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-76"><a href="#cb22-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb22-77"><a href="#cb22-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span>, row_id),</span>
+<span id="cb22-78"><a href="#cb22-78" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="fu">c</span>(<span class="st">"location"</span>, <span class="st">"variable"</span>),</span>
+<span id="cb22-79"><a href="#cb22-79" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_pattern =</span> <span class="st">"^(.*?)</span><span class="sc">\\</span><span class="st">.(.*)$"</span></span>
+<span id="cb22-80"><a href="#cb22-80" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb22-81"><a href="#cb22-81" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-82"><a href="#cb22-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb22-83"><a href="#cb22-83" aria-hidden="true" tabindex="-1"></a>    <span class="at">id_cols =</span> <span class="fu">c</span>(row_id, location),</span>
+<span id="cb22-84"><a href="#cb22-84" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> variable,</span>
+<span id="cb22-85"><a href="#cb22-85" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> value</span>
+<span id="cb22-86"><a href="#cb22-86" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb22-87"><a href="#cb22-87" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb22-88"><a href="#cb22-88" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>row_id) <span class="sc">|&gt;</span></span>
+<span id="cb22-89"><a href="#cb22-89" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb22-90"><a href="#cb22-90" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-91"><a href="#cb22-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-92"><a href="#cb22-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-95"><a href="#cb22-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-96"><a href="#cb22-96" aria-hidden="true" tabindex="-1"></a>PanelLong <span class="ot">=</span> <span class="fu">merge</span>(HousingPanellong,EducationPanellong) <span class="sc">|&gt;</span></span>
+<span id="cb22-97"><a href="#cb22-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gentrified=</span><span class="fu">ifelse</span>(location<span class="sc">%in%</span><span class="fu">c</span>(<span class="st">"ancoats"</span>,<span class="st">"quays"</span>),<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb22-98"><a href="#cb22-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-99"><a href="#cb22-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-100"><a href="#cb22-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-101"><a href="#cb22-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-104"><a href="#cb22-104" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-105"><a href="#cb22-105" aria-hidden="true" tabindex="-1"></a>p1<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>graduate<span class="sc">/</span>(graduate<span class="sc">+</span>not_graduate),<span class="at">colour=</span>location))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"%Graduates"</span>)<span class="sc">+</span><span class="fu">theme_light</span>()</span>
+<span id="cb22-106"><a href="#cb22-106" aria-hidden="true" tabindex="-1"></a>p2<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>graduate<span class="sc">/</span>(graduate<span class="sc">+</span>not_graduate),<span class="at">colour=</span><span class="fu">factor</span>(gentrified)))<span class="sc">+</span><span class="fu">stat_summary</span>(<span class="at">fun=</span>mean,<span class="at">geom=</span><span class="st">"line"</span>)<span class="sc">+</span><span class="fu">geom_jitter</span>()<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"%Graduates"</span>)<span class="sc">+</span><span class="fu">theme_dark</span>()</span>
+<span id="cb22-107"><a href="#cb22-107" aria-hidden="true" tabindex="-1"></a>p2<span class="sc">/</span>p1</span>
+<span id="cb22-108"><a href="#cb22-108" aria-hidden="true" tabindex="-1"></a>p3<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>local_authority_etc<span class="sc">/</span>(owner_occupied<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures<span class="sc">+</span>local_authority_etc),<span class="at">colour=</span>location))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"%LocalAuthority"</span>)<span class="sc">+</span><span class="fu">theme_light</span>()</span>
+<span id="cb22-109"><a href="#cb22-109" aria-hidden="true" tabindex="-1"></a>p4<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>local_authority_etc<span class="sc">/</span>(owner_occupied<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures<span class="sc">+</span>local_authority_etc),<span class="at">colour=</span><span class="fu">factor</span>(gentrified)))<span class="sc">+</span><span class="fu">stat_summary</span>(<span class="at">fun=</span>mean,<span class="at">geom=</span><span class="st">"line"</span>)<span class="sc">+</span><span class="fu">geom_jitter</span>()<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"%LocalAuthority"</span>)<span class="sc">+</span><span class="fu">theme_dark</span>()</span>
+<span id="cb22-110"><a href="#cb22-110" aria-hidden="true" tabindex="-1"></a>p4<span class="sc">/</span>p3</span>
+<span id="cb22-111"><a href="#cb22-111" aria-hidden="true" tabindex="-1"></a>p5<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>owner_occupied<span class="sc">/</span>(owner_occupied<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures<span class="sc">+</span>local_authority_etc),<span class="at">colour=</span>location))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"%Owner_occupied"</span>)<span class="sc">+</span><span class="fu">theme_light</span>()</span>
+<span id="cb22-112"><a href="#cb22-112" aria-hidden="true" tabindex="-1"></a>p6<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>owner_occupied<span class="sc">/</span>(owner_occupied<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures<span class="sc">+</span>local_authority_etc),<span class="at">colour=</span><span class="fu">factor</span>(gentrified)))<span class="sc">+</span><span class="fu">stat_summary</span>(<span class="at">fun=</span>mean,<span class="at">geom=</span><span class="st">"line"</span>)<span class="sc">+</span><span class="fu">geom_jitter</span>()<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"%Owner_occupied"</span>)<span class="sc">+</span><span class="fu">theme_dark</span>()</span>
+<span id="cb22-113"><a href="#cb22-113" aria-hidden="true" tabindex="-1"></a>p6<span class="sc">/</span>p5</span>
+<span id="cb22-114"><a href="#cb22-114" aria-hidden="true" tabindex="-1"></a>p7<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>(other_rented<span class="sc">+</span>other_tenures)<span class="sc">/</span>(owner_occupied<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures<span class="sc">+</span>local_authority_etc),<span class="at">colour=</span>location))<span class="sc">+</span><span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb22-115"><a href="#cb22-115" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"%other_rented+tenures"</span>)<span class="sc">+</span><span class="fu">theme_light</span>()</span>
+<span id="cb22-116"><a href="#cb22-116" aria-hidden="true" tabindex="-1"></a>p8<span class="ot">=</span><span class="fu">ggplot</span>(PanelLong,<span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>(other_rented<span class="sc">+</span>other_tenures)<span class="sc">/</span>(owner_occupied<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures<span class="sc">+</span>local_authority_etc),<span class="at">colour=</span><span class="fu">factor</span>(gentrified)))<span class="sc">+</span></span>
+<span id="cb22-117"><a href="#cb22-117" aria-hidden="true" tabindex="-1"></a><span class="fu">stat_summary</span>(<span class="at">fun=</span>mean,<span class="at">geom=</span><span class="st">"line"</span>)<span class="sc">+</span><span class="fu">geom_jitter</span>()<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">"%other_rented+tenures"</span>)<span class="sc">+</span><span class="fu">theme_dark</span>()</span>
+<span id="cb22-118"><a href="#cb22-118" aria-hidden="true" tabindex="-1"></a>p8<span class="sc">/</span>p7</span>
+<span id="cb22-119"><a href="#cb22-119" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-120"><a href="#cb22-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-123"><a href="#cb22-123" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-124"><a href="#cb22-124" aria-hidden="true" tabindex="-1"></a>combined_plot <span class="ot">=</span> (p4<span class="sc">/</span>p3)<span class="sc">|</span>(p6<span class="sc">/</span>p5)<span class="sc">|</span>(p8<span class="sc">/</span>p7) <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">guides =</span> <span class="st">"collect"</span>)</span>
+<span id="cb22-125"><a href="#cb22-125" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">datasummary_skim</span>(PanelLong)</span>
+<span id="cb22-126"><a href="#cb22-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-127"><a href="#cb22-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-130"><a href="#cb22-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-131"><a href="#cb22-131" aria-hidden="true" tabindex="-1"></a>EducationPanelProp <span class="ot">=</span> EducationPanellong <span class="sc">|&gt;</span></span>
+<span id="cb22-132"><a href="#cb22-132" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">GraduateP=</span>graduate<span class="sc">/</span>(graduate<span class="sc">+</span>not_graduate),</span>
+<span id="cb22-133"><a href="#cb22-133" aria-hidden="true" tabindex="-1"></a>  <span class="at">NGraduateP =</span> not_graduate<span class="sc">/</span>(graduate<span class="sc">+</span>not_graduate))</span>
+<span id="cb22-134"><a href="#cb22-134" aria-hidden="true" tabindex="-1"></a>  HousingPanelProp <span class="ot">=</span> HousingPanellong <span class="sc">|&gt;</span></span>
+<span id="cb22-135"><a href="#cb22-135" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">local_authority_etcP=</span>local_authority_etc<span class="sc">/</span>(owner_occupied<span class="sc">+</span>local_authority_etc<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures),</span>
+<span id="cb22-136"><a href="#cb22-136" aria-hidden="true" tabindex="-1"></a>   <span class="at">owner_occupiedP=</span>owner_occupied<span class="sc">/</span>(owner_occupied<span class="sc">+</span>local_authority_etc<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures),</span>
+<span id="cb22-137"><a href="#cb22-137" aria-hidden="true" tabindex="-1"></a>    <span class="at">otherrented_tenuresP=</span>(other_rented<span class="sc">+</span>other_tenures)<span class="sc">/</span>(owner_occupied<span class="sc">+</span>local_authority_etc<span class="sc">+</span>other_rented<span class="sc">+</span>other_tenures))</span>
+<span id="cb22-138"><a href="#cb22-138" aria-hidden="true" tabindex="-1"></a>    LongPanelProp <span class="ot">=</span> <span class="fu">merge</span>(EducationPanelProp,HousingPanelProp)</span>
+<span id="cb22-139"><a href="#cb22-139" aria-hidden="true" tabindex="-1"></a>    LongPanelPropj<span class="ot">=</span> <span class="fu">select</span>(LongPanelProp,<span class="fu">c</span>(location,year,GraduateP,local_authority_etcP,owner_occupiedP, otherrented_tenuresP)) <span class="sc">|&gt;</span></span>
+<span id="cb22-140"><a href="#cb22-140" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gentrified=</span><span class="fu">ifelse</span>(location<span class="sc">%in%</span><span class="fu">c</span>(<span class="st">"ancoats"</span>,<span class="st">"quays"</span>),<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb22-141"><a href="#cb22-141" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-142"><a href="#cb22-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-145"><a href="#cb22-145" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-146"><a href="#cb22-146" aria-hidden="true" tabindex="-1"></a><span class="co">#Simon Rudkin Didn't sponsor this I promise, i just found his posters very pretty and wanted to try and make some too#</span></span>
+<span id="cb22-147"><a href="#cb22-147" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BallMapper)</span>
+<span id="cb22-148"><a href="#cb22-148" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb22-149"><a href="#cb22-149" aria-hidden="true" tabindex="-1"></a>values <span class="ot">=</span> LongPanelPropj<span class="sc">$</span>GraduateP</span>
+<span id="cb22-150"><a href="#cb22-150" aria-hidden="true" tabindex="-1"></a>points <span class="ot">=</span>  LongPanelPropj[,<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)]</span>
+<span id="cb22-151"><a href="#cb22-151" aria-hidden="true" tabindex="-1"></a>ball <span class="ot">=</span> BallMapper<span class="sc">::</span><span class="fu">BallMapper</span>(<span class="fu">as.data.frame</span>(points),<span class="fu">as.data.frame</span>(values),<span class="at">epsilon =</span> <span class="fl">0.01</span>)</span>
+<span id="cb22-152"><a href="#cb22-152" aria-hidden="true" tabindex="-1"></a>ball <span class="ot">=</span> BallMapper<span class="sc">::</span><span class="fu">BallMapper</span>(<span class="fu">as.data.frame</span>(points),<span class="fu">as.data.frame</span>(values),<span class="at">epsilon =</span> <span class="fl">0.17</span>) <span class="co">#epsilon 0.17 seems to preserve the complexity in the best way</span></span>
+<span id="cb22-153"><a href="#cb22-153" aria-hidden="true" tabindex="-1"></a>ballassign <span class="ot">=</span> ball<span class="sc">$</span>points_covered_by_landmarks</span>
+<span id="cb22-154"><a href="#cb22-154" aria-hidden="true" tabindex="-1"></a><span class="co">#Split by gentrificaiion#</span></span>
+<span id="cb22-155"><a href="#cb22-155" aria-hidden="true" tabindex="-1"></a>Gentonly <span class="ot">=</span> <span class="fu">filter</span>(LongPanelPropj,gentrified<span class="sc">==</span><span class="dv">1</span>)</span>
+<span id="cb22-156"><a href="#cb22-156" aria-hidden="true" tabindex="-1"></a>values <span class="ot">=</span> Gentonly<span class="sc">$</span>GraduateP</span>
+<span id="cb22-157"><a href="#cb22-157" aria-hidden="true" tabindex="-1"></a>points <span class="ot">=</span>  Gentonly[,<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)]</span>
+<span id="cb22-158"><a href="#cb22-158" aria-hidden="true" tabindex="-1"></a>ball1 <span class="ot">=</span> BallMapper<span class="sc">::</span><span class="fu">BallMapper</span>(<span class="fu">as.data.frame</span>(points),<span class="fu">as.data.frame</span>(values),<span class="at">epsilon =</span> <span class="fl">0.17</span>) <span class="co">#epsilon 0.17 seems to preserve the complexity in the best way</span></span>
+<span id="cb22-159"><a href="#cb22-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-160"><a href="#cb22-160" aria-hidden="true" tabindex="-1"></a>Gentnot <span class="ot">=</span> <span class="fu">filter</span>(LongPanelPropj,gentrified<span class="sc">==</span><span class="dv">0</span>)</span>
+<span id="cb22-161"><a href="#cb22-161" aria-hidden="true" tabindex="-1"></a>values <span class="ot">=</span> Gentnot<span class="sc">$</span>GraduateP</span>
+<span id="cb22-162"><a href="#cb22-162" aria-hidden="true" tabindex="-1"></a>points <span class="ot">=</span>  Gentnot[,<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)]</span>
+<span id="cb22-163"><a href="#cb22-163" aria-hidden="true" tabindex="-1"></a>ball2 <span class="ot">=</span> BallMapper<span class="sc">::</span><span class="fu">BallMapper</span>(<span class="fu">as.data.frame</span>(points),<span class="fu">as.data.frame</span>(values),<span class="at">epsilon =</span> <span class="fl">0.17</span>) <span class="co">#epsilon 0.17 seems to preserve the complexity in the best way</span></span>
+<span id="cb22-164"><a href="#cb22-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-165"><a href="#cb22-165" aria-hidden="true" tabindex="-1"></a><span class="fu">ColorIgraphPlot</span>(ball,<span class="at">showLegend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> <span class="fu">title</span>(<span class="st">"Ball Map of Gentrification e=0.17,(Grad%)"</span>)</span>
+<span id="cb22-166"><a href="#cb22-166" aria-hidden="true" tabindex="-1"></a><span class="fu">ColorIgraphPlot</span>(ball1,<span class="at">showLegend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> <span class="fu">title</span>(<span class="st">"Ball Map of Gentrifiying areas e=0.17,(Grad%)"</span>)</span>
+<span id="cb22-167"><a href="#cb22-167" aria-hidden="true" tabindex="-1"></a><span class="fu">ColorIgraphPlot</span>(ball2,<span class="at">showLegend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> <span class="fu">title</span>(<span class="st">"Ball Map of non gentrifying areas e=0.17,(Grad%)"</span>)</span>
+<span id="cb22-168"><a href="#cb22-168" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-169"><a href="#cb22-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-170"><a href="#cb22-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-173"><a href="#cb22-173" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-174"><a href="#cb22-174" aria-hidden="true" tabindex="-1"></a><span class="co">#WARNING AI Generated Code as I am only learning how to properly add unit time labels to Ball Mapper Graphs#</span></span>
+<span id="cb22-175"><a href="#cb22-175" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb22-176"><a href="#cb22-176" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb22-177"><a href="#cb22-177" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb22-178"><a href="#cb22-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-179"><a href="#cb22-179" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Number of nodes</span></span>
+<span id="cb22-180"><a href="#cb22-180" aria-hidden="true" tabindex="-1"></a>n_nodes <span class="ot">&lt;-</span> <span class="fu">length</span>(ball<span class="sc">$</span>coloring)</span>
+<span id="cb22-181"><a href="#cb22-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-182"><a href="#cb22-182" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Calculate ball sizes from your ballassign indices</span></span>
+<span id="cb22-183"><a href="#cb22-183" aria-hidden="true" tabindex="-1"></a>ball_sizes <span class="ot">&lt;-</span> <span class="fu">sapply</span>(ball<span class="sc">$</span>points_covered_by_landmarks, length)</span>
+<span id="cb22-184"><a href="#cb22-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-185"><a href="#cb22-185" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Generate unit-time labels for each ball</span></span>
+<span id="cb22-186"><a href="#cb22-186" aria-hidden="true" tabindex="-1"></a>node_labels <span class="ot">&lt;-</span> <span class="fu">sapply</span>(ball<span class="sc">$</span>points_covered_by_landmarks, <span class="cf">function</span>(indices) {</span>
+<span id="cb22-187"><a href="#cb22-187" aria-hidden="true" tabindex="-1"></a>  subset_data <span class="ot">&lt;-</span> PanelLong[indices, ]</span>
+<span id="cb22-188"><a href="#cb22-188" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(subset_data<span class="sc">$</span>location, <span class="st">"-"</span>, subset_data<span class="sc">$</span>year, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb22-189"><a href="#cb22-189" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb22-190"><a href="#cb22-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-191"><a href="#cb22-191" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Build the vertices data frame safely</span></span>
+<span id="cb22-192"><a href="#cb22-192" aria-hidden="true" tabindex="-1"></a>vertices_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb22-193"><a href="#cb22-193" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="dv">1</span><span class="sc">:</span>n_nodes,</span>
+<span id="cb22-194"><a href="#cb22-194" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> node_labels,</span>
+<span id="cb22-195"><a href="#cb22-195" aria-hidden="true" tabindex="-1"></a>  <span class="at">coloring =</span> ball<span class="sc">$</span>coloring,</span>
+<span id="cb22-196"><a href="#cb22-196" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> ball_sizes</span>
+<span id="cb22-197"><a href="#cb22-197" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-198"><a href="#cb22-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-199"><a href="#cb22-199" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Create the igraph object</span></span>
+<span id="cb22-200"><a href="#cb22-200" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(<span class="at">d =</span> ball<span class="sc">$</span>edges, <span class="at">vertices =</span> vertices_df, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb22-201"><a href="#cb22-201" aria-hidden="true" tabindex="-1"></a><span class="co">#Though I did customise the plot below though#</span></span>
+<span id="cb22-202"><a href="#cb22-202" aria-hidden="true" tabindex="-1"></a><span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
+<span id="cb22-203"><a href="#cb22-203" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">color =</span> <span class="st">"gray60"</span>) <span class="sc">+</span></span>
+<span id="cb22-204"><a href="#cb22-204" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> size, <span class="at">color =</span> coloring)) <span class="sc">+</span></span>
+<span id="cb22-205"><a href="#cb22-205" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="fl">2.5</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb22-206"><a href="#cb22-206" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb22-207"><a href="#cb22-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb22-208"><a href="#cb22-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup withing +-17 percentage points"</span>,</span>
+<span id="cb22-209"><a href="#cb22-209" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"%Graduates"</span>, <span class="at">size =</span> <span class="st">"Ball Size(number of points)"</span>) <span class="sc">+</span> <span class="fu">scale_size_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">5</span>))</span>
+<span id="cb22-210"><a href="#cb22-210" aria-hidden="true" tabindex="-1"></a><span class="fu">datasummary_skim</span>(LongPanelPropj)      </span>
+<span id="cb22-211"><a href="#cb22-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-212"><a href="#cb22-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-215"><a href="#cb22-215" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-216"><a href="#cb22-216" aria-hidden="true" tabindex="-1"></a><span class="co">#My idea is to now  augment the code to create separate plots for gentrified and non gentrified areas</span></span>
+<span id="cb22-217"><a href="#cb22-217" aria-hidden="true" tabindex="-1"></a>n_nodes <span class="ot">&lt;-</span> <span class="fu">length</span>(ball1<span class="sc">$</span>coloring)</span>
+<span id="cb22-218"><a href="#cb22-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-219"><a href="#cb22-219" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Calculate ball sizes from your ballassign indices</span></span>
+<span id="cb22-220"><a href="#cb22-220" aria-hidden="true" tabindex="-1"></a>ball_sizes <span class="ot">&lt;-</span> <span class="fu">sapply</span>(ball1<span class="sc">$</span>points_covered_by_landmarks, length)</span>
+<span id="cb22-221"><a href="#cb22-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-222"><a href="#cb22-222" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Generate unit-time labels for each ball</span></span>
+<span id="cb22-223"><a href="#cb22-223" aria-hidden="true" tabindex="-1"></a>node_labels <span class="ot">&lt;-</span> <span class="fu">sapply</span>(ball1<span class="sc">$</span>points_covered_by_landmarks, <span class="cf">function</span>(indices) {</span>
+<span id="cb22-224"><a href="#cb22-224" aria-hidden="true" tabindex="-1"></a>  subset_data <span class="ot">&lt;-</span> Gentonly[indices, ]</span>
+<span id="cb22-225"><a href="#cb22-225" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(subset_data<span class="sc">$</span>location, <span class="st">"-"</span>, subset_data<span class="sc">$</span>year, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb22-226"><a href="#cb22-226" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb22-227"><a href="#cb22-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-228"><a href="#cb22-228" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Build the vertices data frame safely</span></span>
+<span id="cb22-229"><a href="#cb22-229" aria-hidden="true" tabindex="-1"></a>vertices_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb22-230"><a href="#cb22-230" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="dv">1</span><span class="sc">:</span>n_nodes,</span>
+<span id="cb22-231"><a href="#cb22-231" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> node_labels,</span>
+<span id="cb22-232"><a href="#cb22-232" aria-hidden="true" tabindex="-1"></a>  <span class="at">coloring =</span> ball1<span class="sc">$</span>coloring,</span>
+<span id="cb22-233"><a href="#cb22-233" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> ball_sizes</span>
+<span id="cb22-234"><a href="#cb22-234" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-235"><a href="#cb22-235" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-236"><a href="#cb22-236" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Create the igraph object</span></span>
+<span id="cb22-237"><a href="#cb22-237" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(<span class="at">d =</span> ball1<span class="sc">$</span>edges, <span class="at">vertices =</span> vertices_df, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb22-238"><a href="#cb22-238" aria-hidden="true" tabindex="-1"></a><span class="co">#Though I did customise the plot below though#</span></span>
+<span id="cb22-239"><a href="#cb22-239" aria-hidden="true" tabindex="-1"></a> g1 <span class="ot">=</span> <span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
+<span id="cb22-240"><a href="#cb22-240" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">color =</span> <span class="st">"gray60"</span>) <span class="sc">+</span></span>
+<span id="cb22-241"><a href="#cb22-241" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> size, <span class="at">color =</span> coloring)) <span class="sc">+</span></span>
+<span id="cb22-242"><a href="#cb22-242" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="dv">6</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb22-243"><a href="#cb22-243" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb22-244"><a href="#cb22-244" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb22-245"><a href="#cb22-245" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ball Mapper Graph of gentrified areas - points in the same ball are closest on housing market makeup withing +-17 percentage points"</span>,</span>
+<span id="cb22-246"><a href="#cb22-246" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"%Graduates"</span>, <span class="at">size =</span> <span class="st">"Ball Size(number of points)"</span>) <span class="sc">+</span> <span class="fu">scale_size_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">10</span>))</span>
+<span id="cb22-247"><a href="#cb22-247" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb22-248"><a href="#cb22-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-251"><a href="#cb22-251" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb22-252"><a href="#cb22-252" aria-hidden="true" tabindex="-1"></a>n_nodes <span class="ot">&lt;-</span> <span class="fu">length</span>(ball2<span class="sc">$</span>coloring)</span>
+<span id="cb22-253"><a href="#cb22-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-254"><a href="#cb22-254" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Calculate ball sizes from your ballassign indices</span></span>
+<span id="cb22-255"><a href="#cb22-255" aria-hidden="true" tabindex="-1"></a>ball_sizes <span class="ot">&lt;-</span> <span class="fu">sapply</span>(ball2<span class="sc">$</span>points_covered_by_landmarks, length)</span>
+<span id="cb22-256"><a href="#cb22-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-257"><a href="#cb22-257" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Generate unit-time labels for each ball</span></span>
+<span id="cb22-258"><a href="#cb22-258" aria-hidden="true" tabindex="-1"></a>node_labels <span class="ot">&lt;-</span> <span class="fu">sapply</span>(ball2<span class="sc">$</span>points_covered_by_landmarks, <span class="cf">function</span>(indices) {</span>
+<span id="cb22-259"><a href="#cb22-259" aria-hidden="true" tabindex="-1"></a>  subset_data <span class="ot">&lt;-</span> Gentnot[indices, ]</span>
+<span id="cb22-260"><a href="#cb22-260" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste0</span>(subset_data<span class="sc">$</span>location, <span class="st">"-"</span>, subset_data<span class="sc">$</span>year, <span class="at">collapse =</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb22-261"><a href="#cb22-261" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb22-262"><a href="#cb22-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-263"><a href="#cb22-263" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Build the vertices data frame safely</span></span>
+<span id="cb22-264"><a href="#cb22-264" aria-hidden="true" tabindex="-1"></a>vertices_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb22-265"><a href="#cb22-265" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="dv">1</span><span class="sc">:</span>n_nodes,</span>
+<span id="cb22-266"><a href="#cb22-266" aria-hidden="true" tabindex="-1"></a>  <span class="at">label =</span> node_labels,</span>
+<span id="cb22-267"><a href="#cb22-267" aria-hidden="true" tabindex="-1"></a>  <span class="at">coloring =</span> ball2<span class="sc">$</span>coloring,</span>
+<span id="cb22-268"><a href="#cb22-268" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> ball_sizes</span>
+<span id="cb22-269"><a href="#cb22-269" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-270"><a href="#cb22-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-271"><a href="#cb22-271" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Create the igraph object</span></span>
+<span id="cb22-272"><a href="#cb22-272" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">graph_from_data_frame</span>(<span class="at">d =</span> ball2<span class="sc">$</span>edges, <span class="at">vertices =</span> vertices_df, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb22-273"><a href="#cb22-273" aria-hidden="true" tabindex="-1"></a><span class="co">#Though I did customise the plot below though#</span></span>
+<span id="cb22-274"><a href="#cb22-274" aria-hidden="true" tabindex="-1"></a>g0 <span class="ot">=</span> <span class="fu">ggraph</span>(g, <span class="at">layout =</span> <span class="st">"stress"</span>) <span class="sc">+</span></span>
+<span id="cb22-275"><a href="#cb22-275" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_edge_link</span>(<span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">color =</span> <span class="st">"gray60"</span>) <span class="sc">+</span></span>
+<span id="cb22-276"><a href="#cb22-276" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> size, <span class="at">color =</span> coloring)) <span class="sc">+</span></span>
+<span id="cb22-277"><a href="#cb22-277" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> label), <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb22-278"><a href="#cb22-278" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb22-279"><a href="#cb22-279" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb22-280"><a href="#cb22-280" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ball Mapper Graph of non gentrified areas - points in the same ball are closest on housing market makeup withing +-17 percentage points"</span>,</span>
+<span id="cb22-281"><a href="#cb22-281" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"%Graduates"</span>, <span class="at">size =</span> <span class="st">"Ball Size(number of points)"</span>) <span class="sc">+</span> <span class="fu">scale_size_continuous</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">10</span>))</span>
+<span id="cb22-282"><a href="#cb22-282" aria-hidden="true" tabindex="-1"></a> g1<span class="sc">/</span>g0      </span>
+<span id="cb22-283"><a href="#cb22-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-284"><a href="#cb22-284" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 
