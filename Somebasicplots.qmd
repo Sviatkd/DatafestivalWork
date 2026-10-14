@@ -81,11 +81,53 @@ HousingPanellong <- HousingPanelwide |>
   janitor::clean_names()
 ```
 
+```{r}
+CbirthPanelwide <- read_csv("d:/PositStuff/gmpanel/CoBirthPanelwide.csv")
+CbirthPanellong = CbirthPanelwide |>
+  # 1. Create a row identifier so each year stays separate
+  mutate(row_id = row_number()) |>
+  
+  pivot_longer(
+    cols = -c(1, row_id),
+    names_to = c("location", "variable"),
+    names_pattern = "^(.*?)\\.(.*)$"
+  ) |>
+  
+  pivot_wider(
+    id_cols = c(row_id, location),
+    names_from = variable,
+    values_from = value
+  ) |>
+  
+  select(-row_id) |>
+  janitor::clean_names()
+```
 
 ```{r}
-PanelLong = merge(HousingPanellong,EducationPanellong) |>
-  mutate(gentrified=ifelse(location%in%c("ancoats","quays"),1,0))
+EthnicPanelwide <- read_csv("d:/PositStuff/gmpanel/EthnicityPanelwide.csv")
+EthnicPanellong = EthnicPanelwide |>
+  # 1. Create a row identifier so each year stays separate
+  mutate(row_id = row_number()) |>
+  
+  pivot_longer(
+    cols = -c(1, row_id),
+    names_to = c("location", "variable"),
+    names_pattern = "^(.*?)\\.(.*)$"
+  ) |>
+  
+  pivot_wider(
+    id_cols = c(row_id, location),
+    names_from = variable,
+    values_from = value
+  ) |>
+  
+  select(-row_id) |>
+  janitor::clean_names()
+```
 
+```{r}
+PanelLong = merge(HousingPanellong,EducationPanellong) |> merge(CbirthPanellong) |> left_join(EthnicPanellong) |>
+  mutate(gentrified=ifelse(location%in%c("ancoats","quays"),1,0))
 ```
 
 
