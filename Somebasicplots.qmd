@@ -161,8 +161,20 @@ EducationPanelProp = EducationPanellong |>
     mutate(local_authority_etcP=local_authority_etc/(owner_occupied+local_authority_etc+other_rented+other_tenures),
    owner_occupiedP=owner_occupied/(owner_occupied+local_authority_etc+other_rented+other_tenures),
     otherrented_tenuresP=(other_rented+other_tenures)/(owner_occupied+local_authority_etc+other_rented+other_tenures))
-    LongPanelProp = merge(EducationPanelProp,HousingPanelProp)
-    LongPanelPropj= select(LongPanelProp,c(location,year,GraduateP,local_authority_etcP,owner_occupiedP, otherrented_tenuresP)) |>
+CbirthPanelProp = CbirthPanellong |>
+  mutate(BornUkP=united_kingdom/(other_europe+rest_of_the_world+united_kingdom),
+  BornEuropeP = other_europe/(other_europe+rest_of_the_world+united_kingdom),
+  BornRestP = rest_of_the_world/(other_europe+rest_of_the_world+united_kingdom))
+
+  EthicPanelProp = EthnicPanellong |>
+  mutate(WhiteP=white/(white+black+asian+other),
+  BlackP=black/(white+black+asian+other),
+  AsianP=asian/(white+black+asian+other),
+  OtherP=other/(white+black+asian+other))
+
+
+    LongPanelProp = merge(EducationPanelProp,HousingPanelProp)|>  merge(CbirthPanelProp) |> left_join(EthicPanelProp)
+    LongPanelPropj= select(LongPanelProp,c(location,year,GraduateP,local_authority_etcP,owner_occupiedP, otherrented_tenuresP,BornUkP,BornEuropeP,BornRestP,WhiteP,BlackP,AsianP,OtherP)) |>
   mutate(gentrified=ifelse(location%in%c("ancoats","quays"),1,0))
 ```
 
@@ -170,19 +182,19 @@ EducationPanelProp = EducationPanellong |>
 #Simon Rudkin Didn't sponsor this I promise, i just found his posters very pretty and wanted to try and make some too#
 library(BallMapper)
 set.seed(123)
-values = LongPanelPropj$GraduateP
+values = LongPanelPropj$BornUkP
 points =  LongPanelPropj[,c(4,5,6)]
 ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.01)
 ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
 ballassign = ball$points_covered_by_landmarks
 #Split by gentrificaiion#
 Gentonly = filter(LongPanelPropj,gentrified==1)
-values = Gentonly$GraduateP
+values = Gentonly$BornUkP
 points =  Gentonly[,c(4,5,6)]
 ball1 = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
 
 Gentnot = filter(LongPanelPropj,gentrified==0)
-values = Gentnot$GraduateP
+values = Gentnot$BornUkP
 points =  Gentnot[,c(4,5,6)]
 ball2 = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
 
