@@ -179,22 +179,22 @@ CbirthPanelProp = CbirthPanellong |>
 ```
 
 ```{r}
-#Simon Rudkin Didn't sponsor this I promise, i just found his posters very pretty and wanted to try and make some too#
+#Simon Rudkin Didn't sponsor this I promise, i just found his posters very pretty and wanted to try and make some too, values select the secondary colouring variable for the graph, points select points you want mapped via balls#
 library(BallMapper)
 set.seed(123)
-values = LongPanelPropj$BornUkP
+values = LongPanelPropj$GraduateP 
 points =  LongPanelPropj[,c(4,5,6)]
 ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.01)
 ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
 ballassign = ball$points_covered_by_landmarks
 #Split by gentrificaiion#
 Gentonly = filter(LongPanelPropj,gentrified==1)
-values = Gentonly$BornUkP
+values = Gentonly$GraduateP
 points =  Gentonly[,c(4,5,6)]
 ball1 = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
 
 Gentnot = filter(LongPanelPropj,gentrified==0)
-values = Gentnot$BornUkP
+values = Gentnot$GraduateP
 points =  Gentnot[,c(4,5,6)]
 ball2 = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
 
