@@ -1,0 +1,378 @@
+---
+title: "Very Savagely Presented Plots"
+format: pptx
+---
+#Part 1 Univariate Visuals
+
+Labour Market Makeup 
+and Gentrification
+
+```{r}
+#| fig-width: 16
+#| fig-height: 8
+library(readr)
+library(janitor)
+library(tidyverse)
+library(patchwork)
+library(modelsummary)
+LongPanelPropj = read_csv("d:/PositStuff/gmpanel/LongPanelPropj.csv")
+LongPanelProp = read_csv("d:/PositStuff/gmpanel/LongPanelProp.csv")
+PanelLong = read_csv("d:/PositStuff/gmpanel/LongPanelProp.csv")
+p1=ggplot(PanelLong,aes(x=year,y=graduate/(graduate+not_graduate),colour=location))+geom_line()+ylab("%Graduates")+theme_light()
+p2=ggplot(PanelLong,aes(x=year,y=graduate/(graduate+not_graduate),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Graduates")+theme_classic()
+p9=ggplot(PanelLong,aes(x=year,y=routine_manual_occupations/(intermediate_occupations+routine_manual_occupations+never_worked_long_term_unemployed+higher_managerial_administrative_professional_occupations),colour=location))+geom_line()+ylab("%Manual")+theme_light()
+p10=ggplot(PanelLong,aes(x=year,y=routine_manual_occupations/(intermediate_occupations+routine_manual_occupations+never_worked_long_term_unemployed+higher_managerial_administrative_professional_occupations),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Manual")+theme_classic()
+p11=ggplot(PanelLong,aes(x=year,y=higher_managerial_administrative_professional_occupations/(intermediate_occupations+routine_manual_occupations+never_worked_long_term_unemployed+higher_managerial_administrative_professional_occupations),colour=location))+geom_line()+ylab("%Higher_Managerial")+theme_light()
+p12=ggplot(PanelLong,aes(x=year,y=higher_managerial_administrative_professional_occupations/(intermediate_occupations+routine_manual_occupations+never_worked_long_term_unemployed+higher_managerial_administrative_professional_occupations),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Higher_Managerial")+theme_classic()
+p13=ggplot(PanelLong,aes(x=year,y=never_worked_long_term_unemployed/(intermediate_occupations+routine_manual_occupations+never_worked_long_term_unemployed+higher_managerial_administrative_professional_occupations),colour=location))+geom_line()+ylab("%Unemployed")+theme_light()
+p14=ggplot(PanelLong,aes(x=year,y=never_worked_long_term_unemployed/(intermediate_occupations+routine_manual_occupations+never_worked_long_term_unemployed+higher_managerial_administrative_professional_occupations),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Unemployed")+theme_classic()
+(p2/p1)|(p10/p9)|(p12/p11)|(p14/p13)
+```
+
+Housing Market Makeup
+and Gentrification
+```{r}
+#| fig-width: 12
+#| fig-height: 8
+p3=ggplot(PanelLong,aes(x=year,y=local_authority_etc/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=location))+geom_line()+ylab("%LocalAuthority")+theme_light()
+p4=ggplot(PanelLong,aes(x=year,y=local_authority_etc/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%LocalAuthority")+theme_classic()
+p5=ggplot(PanelLong,aes(x=year,y=owner_occupied/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=location))+geom_line()+ylab("%Owner_occupied")+theme_light()
+p6=ggplot(PanelLong,aes(x=year,y=owner_occupied/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Owner_occupied")+theme_classic()
+p7=ggplot(PanelLong,aes(x=year,y=(other_rented+other_tenures)/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=location))+geom_line()+
+  ylab("%other_rented+tenures")+theme_light()
+p8=ggplot(PanelLong,aes(x=year,y=(other_rented+other_tenures)/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=factor(gentrified)))+
+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%other_rented+tenures")+theme_classic()
+(p4/p3)|(p6/p5)|(p8/p7)
+```
+
+Country of Birth 
+and Gentrification
+```{r}
+#| fig-width: 12
+#| fig-height: 8
+p16=ggplot(LongPanelPropj,aes(x=year,y=BornUkP,colour=location))+geom_line()+ylab("%BornUK")+theme_light()
+p17=ggplot(LongPanelPropj,aes(x=year,y=BornUkP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%BornUK")+theme_classic()
+p19=ggplot(LongPanelPropj,aes(x=year,y=BornEuropeP,colour=location))+geom_line()+ylab("%BornEurope")+theme_light()
+p20=ggplot(LongPanelPropj,aes(x=year,y=BornEuropeP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%BornEurope")+theme_classic()
+p21=ggplot(LongPanelPropj,aes(x=year,y=BornRestP,colour=location))+geom_line()+ylab("%BornRest")+theme_light()
+p22=ggplot(LongPanelPropj,aes(x=year,y=BornRestP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%BornRest")+theme_classic()
+(p17/p16)|(p20/p19)|(p22/p21)
+```
+
+#Part 2 Multivariate Visuals with Ball Mapper
+
+```{r}
+#| fig-width: 18
+#| fig-height: 10
+#Simon Rudkin Didn't sponsor this I promise, i just found his posters very pretty and wanted to try and make some too#
+library(BallMapper)
+set.seed(123)
+values = LongPanelPropj$GraduateP
+points =  LongPanelPropj |> select(owner_occupiedP,local_authority_etcP,otherrented_tenuresP)
+#One possible heuristic to set epsilon is to calculate common dispersion metrics for points specifically IQR/2(Probable error) and standard deviation
+# In our case it turned out that the best representations are generated with e=0.17 or exactly one sd, for robustness its worthwhile to try other values between 0.17 and 0.14
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.01)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
+ballassign = ball$points_covered_by_landmarks
+
+#WARNING AI Generated Code as I am only learning how to properly add unit time labels to Ball Mapper Graphs#
+library(igraph)
+library(ggraph)
+library(ggplot2)
+
+# 1. Number of nodes
+n_nodes <- length(ball$coloring)
+
+# 2. Calculate ball sizes from your ballassign indices
+ball_sizes <- sapply(ball$points_covered_by_landmarks, length)
+
+# 3. Generate unit-time labels for each ball
+node_labels <- sapply(ball$points_covered_by_landmarks, function(indices) {
+  subset_data <- PanelLong[indices, ]
+  paste0(subset_data$location, "-", subset_data$year, collapse = "\n")
+})
+
+# 4. Build the vertices data frame safely
+vertices_df <- data.frame(
+  name = 1:n_nodes,
+  label = node_labels,
+  coloring = ball$coloring,
+  size = ball_sizes
+)
+
+# 5. Create the igraph object
+g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FALSE)
+#Though I did customise the plot below though#
+ggraph(g, layout = "stress") +
+  geom_edge_link(alpha = 0.8, color = "gray60") +
+  geom_node_point(aes(size = size, color = coloring)) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 3.5, color = "black") +
+  scale_color_viridis_c(option="D") +
+  theme_light() +
+  labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
+       color = "%Graduates", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
+``` 
+
+```{r}
+#| fig-width: 18
+#| fig-height: 10
+set.seed(123)
+values = LongPanelPropj$BornUkP
+points =  LongPanelPropj |> select(owner_occupiedP,local_authority_etcP,otherrented_tenuresP)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.01)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
+ballassign = ball$points_covered_by_landmarks
+library(igraph)
+library(ggraph)
+library(ggplot2)
+
+# 1. Number of nodes
+n_nodes <- length(ball$coloring)
+
+# 2. Calculate ball sizes from your ballassign indices
+ball_sizes <- sapply(ball$points_covered_by_landmarks, length)
+
+# 3. Generate unit-time labels for each ball
+node_labels <- sapply(ball$points_covered_by_landmarks, function(indices) {
+  subset_data <- PanelLong[indices, ]
+  paste0(subset_data$location, "-", subset_data$year, collapse = "\n")
+})
+
+# 4. Build the vertices data frame safely
+vertices_df <- data.frame(
+  name = 1:n_nodes,
+  label = node_labels,
+  coloring = ball$coloring,
+  size = ball_sizes
+)
+
+# 5. Create the igraph object
+g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FALSE)
+#Though I did customise the plot below though#
+ggraph(g, layout = "stress") +
+  geom_edge_link(alpha = 0.8, color = "gray60") +
+  geom_node_point(aes(size = size, color = coloring)) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 3.5, color = "black") +
+ scale_color_gradient(low="darkblue",high="orange") +
+  theme_light() +
+  labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
+       color = "%BornUK", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
+```
+
+```{r}
+#| fig-width: 18
+#| fig-height: 10
+set.seed(123)
+values = LongPanelPropj$BornEuropeP
+points =  LongPanelPropj |> select(owner_occupiedP,local_authority_etcP,otherrented_tenuresP)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.01)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
+ballassign = ball$points_covered_by_landmarks
+library(igraph)
+library(ggraph)
+library(ggplot2)
+
+# 1. Number of nodes
+n_nodes <- length(ball$coloring)
+
+# 2. Calculate ball sizes from your ballassign indices
+ball_sizes <- sapply(ball$points_covered_by_landmarks, length)
+
+# 3. Generate unit-time labels for each ball
+node_labels <- sapply(ball$points_covered_by_landmarks, function(indices) {
+  subset_data <- PanelLong[indices, ]
+  paste0(subset_data$location, "-", subset_data$year, collapse = "\n")
+})
+
+# 4. Build the vertices data frame safely
+vertices_df <- data.frame(
+  name = 1:n_nodes,
+  label = node_labels,
+  coloring = ball$coloring,
+  size = ball_sizes
+)
+
+# 5. Create the igraph object
+g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FALSE)
+#Though I did customise the plot below though#
+ggraph(g, layout = "stress") +
+  geom_edge_link(alpha = 0.8, color = "gray60") +
+  geom_node_point(aes(size = size, color = coloring)) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 3.5, color = "black") +
+  scale_color_gradient(low="darkblue",high="orange") +
+  theme_light() +
+  labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
+       color = "%BornEurope", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
+```
+
+```{r}
+#| fig-width: 18
+#| fig-height: 10
+set.seed(123)
+values = LongPanelPropj$BornRestP
+points =  LongPanelPropj |> select(owner_occupiedP,local_authority_etcP,otherrented_tenuresP)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.01)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
+ballassign = ball$points_covered_by_landmarks
+
+# 1. Number of nodes
+n_nodes <- length(ball$coloring)
+
+# 2. Calculate ball sizes from your ballassign indices
+ball_sizes <- sapply(ball$points_covered_by_landmarks, length)
+
+# 3. Generate unit-time labels for each ball
+node_labels <- sapply(ball$points_covered_by_landmarks, function(indices) {
+  subset_data <- PanelLong[indices, ]
+  paste0(subset_data$location, "-", subset_data$year, collapse = "\n")
+})
+
+# 4. Build the vertices data frame safely
+vertices_df <- data.frame(
+  name = 1:n_nodes,
+  label = node_labels,
+  coloring = ball$coloring,
+  size = ball_sizes
+)
+
+# 5. Create the igraph object
+g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FALSE)
+#Though I did customise the plot below though#
+ggraph(g, layout = "stress") +
+  geom_edge_link(alpha = 0.8, color = "gray60") +
+  geom_node_point(aes(size = size, color = coloring)) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 3.5, color = "black") +
+  scale_color_gradient(low="darkblue",high="orange") +
+  theme_light() +
+  labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
+       color = "%BornRest", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12)) 
+```
+
+```{r}
+#| fig-width: 18
+#| fig-height: 10
+library(BallMapper)
+set.seed(123)
+values = LongPanelPropj$manualP
+points =  LongPanelPropj |> select(owner_occupiedP,local_authority_etcP,otherrented_tenuresP)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.01)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
+ballassign = ball$points_covered_by_landmarks
+# 1. Number of nodes
+n_nodes <- length(ball$coloring)
+
+# 2. Calculate ball sizes from your ballassign indices
+ball_sizes <- sapply(ball$points_covered_by_landmarks, length)
+
+# 3. Generate unit-time labels for each ball
+node_labels <- sapply(ball$points_covered_by_landmarks, function(indices) {
+  subset_data <- PanelLong[indices, ]
+  paste0(subset_data$location, "-", subset_data$year, collapse = "\n")
+})
+
+# 4. Build the vertices data frame safely
+vertices_df <- data.frame(
+  name = 1:n_nodes,
+  label = node_labels,
+  coloring = ball$coloring,
+  size = ball_sizes
+)
+
+# 5. Create the igraph object
+g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FALSE)
+#Though I did customise the plot below though#
+ggraph(g, layout = "stress") +
+  geom_edge_link(alpha = 0.8, color = "gray60") +
+  geom_node_point(aes(size = size, color = coloring)) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 3.5, color = "black") +
+  scale_color_gradient(high="orange",low="darkblue") +
+  theme_light() +
+  labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
+       color = "%ManualWork", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
+```
+
+```{r}
+#| fig-width: 18
+#| fig-height: 10
+library(BallMapper)
+set.seed(123)
+values = LongPanelPropj$HighManegmentP
+points =  LongPanelPropj |> select(owner_occupiedP,local_authority_etcP,otherrented_tenuresP)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.01)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
+ballassign = ball$points_covered_by_landmarks
+# 1. Number of nodes
+n_nodes <- length(ball$coloring)
+
+# 2. Calculate ball sizes from your ballassign indices
+ball_sizes <- sapply(ball$points_covered_by_landmarks, length)
+
+# 3. Generate unit-time labels for each ball
+node_labels <- sapply(ball$points_covered_by_landmarks, function(indices) {
+  subset_data <- PanelLong[indices, ]
+  paste0(subset_data$location, "-", subset_data$year, collapse = "\n")
+})
+
+# 4. Build the vertices data frame safely
+vertices_df <- data.frame(
+  name = 1:n_nodes,
+  label = node_labels,
+  coloring = ball$coloring,
+  size = ball_sizes
+)
+
+# 5. Create the igraph object
+g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FALSE)
+#Though I did customise the plot below though#
+ggraph(g, layout = "stress") +
+  geom_edge_link(alpha = 0.8, color = "gray60") +
+  geom_node_point(aes(size = size, color = coloring)) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 3.5, color = "black") +
+  scale_color_gradient(high="orange",low="darkblue") +
+  theme_light() +
+  labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
+       color = "%HighManagerial", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
+```
+
+```{r}
+#| fig-width: 18
+#| fig-height: 10
+library(BallMapper)
+set.seed(123)
+values = LongPanelPropj$unemployedP
+points =  LongPanelPropj |> select(owner_occupiedP,local_authority_etcP,otherrented_tenuresP)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.01)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
+ballassign = ball$points_covered_by_landmarks
+# 1. Number of nodes
+n_nodes <- length(ball$coloring)
+
+# 2. Calculate ball sizes from your ballassign indices
+ball_sizes <- sapply(ball$points_covered_by_landmarks, length)
+
+# 3. Generate unit-time labels for each ball
+node_labels <- sapply(ball$points_covered_by_landmarks, function(indices) {
+  subset_data <- PanelLong[indices, ]
+  paste0(subset_data$location, "-", subset_data$year, collapse = "\n")
+})
+
+# 4. Build the vertices data frame safely
+vertices_df <- data.frame(
+  name = 1:n_nodes,
+  label = node_labels,
+  coloring = ball$coloring,
+  size = ball_sizes
+)
+
+# 5. Create the igraph object
+g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FALSE)
+#Though I did customise the plot below though#
+ggraph(g, layout = "stress") +
+  geom_edge_link(alpha = 0.8, color = "gray60") +
+  geom_node_point(aes(size = size, color = coloring)) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 3.5, color = "black") +
+  scale_color_gradient(high="red",low="darkblue") +
+  theme_light() +
+  labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
+       color = "%Unemployed", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
+```
