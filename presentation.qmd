@@ -1,11 +1,14 @@
 ---
-title: "Very Savagely Presented Plots"
+title: "EDA Results So far"
+subtitle: "(Ben's) Powerpoint idea so good"
 format: pptx
 ---
-#Part 1 Univariate Visuals
+## Definition
+"Gentrification is a process whereby the urban working class and poor are expelled from their districts and replaced by more affluent residents. Its drivers are structural — the policies and planning frameworks of the local state, and the tendency of capital to close rent gaps. It is, as the geographer Neil Smith put it, a “global urban strategy”.[\[10\]](https://www.common-wealth.org/interactive/the-greater-manchester-gentrification-index#fn) To live in a neighbourhood being gentrified is to experience rent rises, the destruction of community and ultimately displacement. Yet it is often something that is difficult to quantify and track."The Greater Manchester Gentrification Index (Common Wealth)
 
-Labour Market Makeup 
-and Gentrification
+# Part 1 Univariate Visuals
+
+## Labour Market Makeup and Gentrification
 
 ```{r}
 #| fig-width: 16
@@ -29,8 +32,12 @@ p14=ggplot(PanelLong,aes(x=year,y=never_worked_long_term_unemployed/(intermediat
 (p2/p1)|(p10/p9)|(p12/p11)|(p14/p13)
 ```
 
-Housing Market Makeup
-and Gentrification
+## Housing Market Makeup and Gentrification
+
+~Comparatively larger increase in grads in gentrifying areas with divergence starting around 1991 census wave.following right to buy owner occupied tenure rises in gentrified areas between 1980-2000 but then drops and flatlines. Very low effect on non gentrified areas though.Following the peak in owner occupied tenure rented and other tenures in ancoats and quays massively overtake those in neighbors around 2000 proportional to the initial Right to Buy effect.~
+
+Could be granger causal? Right to Buy -\> Lag-2Coucnil_tenure- -\> Lag-1Owner_tenure(+) -\>Renting Boom
+
 ```{r}
 #| fig-width: 12
 #| fig-height: 8
@@ -45,8 +52,10 @@ stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%other_rented+tenures")+t
 (p4/p3)|(p6/p5)|(p8/p7)
 ```
 
-Country of Birth 
-and Gentrification
+## Country of Birth and Gentrification
+
+~Housing Makeup and share of those born in UK don't seem to be that strongly associated with both groups experiencing similiar migration patterns with a notable exception of Europeans with notably parallel trends~
+
 ```{r}
 #| fig-width: 12
 #| fig-height: 8
@@ -59,7 +68,9 @@ p22=ggplot(LongPanelPropj,aes(x=year,y=BornRestP,colour=factor(gentrified)))+sta
 (p17/p16)|(p20/p19)|(p22/p21)
 ```
 
-#Part 2 Multivariate Visuals with Ball Mapper
+## Part 2 Multivariate Visuals with Ball Mapper
+
+^~Note that ancoats migrates from one ball to the next and eventually ends up in the high Grad% similiar housing market makeup alongside the quays by 2021. Note that on housing market makeup ancoats is most frequently similiar to chettam and quays to kersal. Note especially that in 1971 Quays had a housing market quite similiar to chettam and ancoats in 2011 and 2021 somewhat defying the trend~^
 
 ```{r}
 #| fig-width: 18
@@ -111,7 +122,7 @@ ggraph(g, layout = "stress") +
   theme_light() +
   labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
        color = "%Graduates", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
-``` 
+```
 
 ```{r}
 #| fig-width: 18
@@ -159,6 +170,8 @@ ggraph(g, layout = "stress") +
        color = "%BornUK", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
 ```
 
+~Ancoats and Quays ended up being slightly(about 2%) more european born given their housing makeup but as obvious from the graph the difference to other areas and times is very minor around 1 and 2 percent. Gentrification was associated with a slightly larger increase in european migration but the difference is practically negligible~
+
 ```{r}
 #| fig-width: 18
 #| fig-height: 10
@@ -204,6 +217,8 @@ ggraph(g, layout = "stress") +
   labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
        color = "%BornEurope", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
 ```
+
+~Nice and tight yellow-orange cluster of share of those neither of european or british descent between 15-20 percent includes both gentrifying and non gentrifying areas. Descent doesn't seem to have a strong relationship with gentrification in the same way that same %Grads does~
 
 ```{r}
 #| fig-width: 18
