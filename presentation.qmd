@@ -68,7 +68,7 @@ p22=ggplot(LongPanelPropj,aes(x=year,y=BornRestP,colour=factor(gentrified)))+sta
 (p17/p16)|(p20/p19)|(p22/p21)
 ```
 
-## Part 2 Multivariate Visuals with Ball Mapper
+# Part 2 Multivariate Visuals with Ball Mapper
 
 ^~Note that ancoats migrates from one ball to the next and eventually ends up in the high Grad% similiar housing market makeup alongside the quays by 2021. Note that on housing market makeup ancoats is most frequently similiar to chettam and quays to kersal. Note especially that in 1971 Quays had a housing market quite similiar to chettam and ancoats in 2011 and 2021 somewhat defying the trend~^
 
