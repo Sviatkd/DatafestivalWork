@@ -68,7 +68,7 @@ p22=ggplot(LongPanelPropj,aes(x=year,y=BornRestP,colour=factor(gentrified)))+sta
 (p17/p16)|(p20/p19)|(p22/p21)
 ```
 
-# Part 2 Multivariate Visuals with Ball Mapper
+# Part 2 Multivariate Visuals with Ball Mapper.Does Gentrification Structurally Manifest in the Data?
 
 ^~Note that ancoats migrates from one ball to the next and eventually ends up in the high Grad% similiar housing market makeup alongside the quays by 2021. Note that on housing market makeup ancoats is most frequently similiar to chettam and quays to kersal. Note especially that in 1971 Quays had a housing market quite similiar to chettam and ancoats in 2011 and 2021 somewhat defying the trend~^
 
@@ -390,4 +390,49 @@ ggraph(g, layout = "stress") +
   theme_light() +
   labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
        color = "%Unemployed", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
+```
+
+# Part 3 What if? approximate counterfactuals with first differences
+
+```{r}
+LongPanelPropj <- LongPanelPropj |> 
+  group_by(location) |> 
+  mutate(across(
+    .cols = c(
+      GraduateP, local_authority_etcP, owner_occupiedP, otherrented_tenuresP, 
+      BornUkP, BornEuropeP, BornRestP, WhiteP, BlackP, AsianP, OtherP, 
+      unemployedP, intermediate_occupationsP, manualP, HighManegmentP
+    ),
+    .fns = ~ . - lag(.)
+ 
+  ))
+```
+
+```{r}
+#| fig-width: 16
+#| fig-height: 8
+p17=ggplot(LongPanelPropj,aes(x=year,y=BornUkP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%BornUK")+theme_light()
+p20=ggplot(LongPanelPropj,aes(x=year,y=BornEuropeP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%BornEurope")+theme_light()
+p22=ggplot(LongPanelPropj,aes(x=year,y=BornRestP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%BornRest")+theme_light()
+p17|p20
+p22
+```
+
+```{r}
+#| fig-width: 16
+#| fig-height: 8
+p17=ggplot(LongPanelPropj,aes(x=year,y=GraduateP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%Grad")+theme_light()
+p20=ggplot(LongPanelPropj,aes(x=year,y=manualP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%ManualW")+theme_light()
+p22=ggplot(LongPanelPropj,aes(x=year,y=unemployedP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%Unemployed")+theme_light()
+p17|p20
+p22
+```
+```{r}
+#| fig-width: 16
+#| fig-height: 8
+p17=ggplot(LongPanelPropj,aes(x=year,y=owner_occupiedP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%Owner_Occupied")+theme_light()
+p20=ggplot(LongPanelPropj,aes(x=year,y=otherrented_tenuresP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%Rented_and_other")+theme_light()
+p22=ggplot(LongPanelPropj,aes(x=year,y=local_authority_etcP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%LAuthorityHousing")+theme_light()
+p17|p20
+p22
 ```
