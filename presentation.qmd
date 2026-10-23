@@ -3,7 +3,9 @@ title: "EDA Results So far"
 subtitle: "(Ben's) Powerpoint idea so good"
 format: pptx
 ---
+
 ## Definition
+
 "Gentrification is a process whereby the urban working class and poor are expelled from their districts and replaced by more affluent residents. Its drivers are structural — the policies and planning frameworks of the local state, and the tendency of capital to close rent gaps. It is, as the geographer Neil Smith put it, a “global urban strategy”.[\[10\]](https://www.common-wealth.org/interactive/the-greater-manchester-gentrification-index#fn) To live in a neighbourhood being gentrified is to experience rent rises, the destruction of community and ultimately displacement. Yet it is often something that is difficult to quantify and track."The Greater Manchester Gentrification Index (Common Wealth)
 
 # Part 1 Univariate Visuals
@@ -22,13 +24,13 @@ LongPanelPropj = read_csv("d:/PositStuff/gmpanel/LongPanelPropj.csv")
 LongPanelProp = read_csv("d:/PositStuff/gmpanel/LongPanelProp.csv")
 PanelLong = read_csv("d:/PositStuff/gmpanel/LongPanelProp.csv")
 p1=ggplot(PanelLong,aes(x=year,y=graduate/(graduate+not_graduate),colour=location))+geom_line()+ylab("%Graduates")+theme_light()
-p2=ggplot(PanelLong,aes(x=year,y=graduate/(graduate+not_graduate),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Graduates")+theme_classic()
+p2=ggplot(PanelLong,aes(x=year,y=graduate/(graduate+not_graduate),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Graduates")+theme_classic()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
 p9=ggplot(PanelLong,aes(x=year,y=routine_manual_occupations/(intermediate_occupations+routine_manual_occupations+never_worked_long_term_unemployed+higher_managerial_administrative_professional_occupations),colour=location))+geom_line()+ylab("%Manual")+theme_light()
-p10=ggplot(PanelLong,aes(x=year,y=routine_manual_occupations/(intermediate_occupations+routine_manual_occupations+never_worked_long_term_unemployed+higher_managerial_administrative_professional_occupations),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Manual")+theme_classic()
+p10=ggplot(PanelLong,aes(x=year,y=routine_manual_occupations/(intermediate_occupations+routine_manual_occupations+never_worked_long_term_unemployed+higher_managerial_administrative_professional_occupations),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Manual")+theme_classic()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
 p11=ggplot(PanelLong,aes(x=year,y=higher_managerial_administrative_professional_occupations/(intermediate_occupations+routine_manual_occupations+never_worked_long_term_unemployed+higher_managerial_administrative_professional_occupations),colour=location))+geom_line()+ylab("%Higher_Managerial")+theme_light()
-p12=ggplot(PanelLong,aes(x=year,y=higher_managerial_administrative_professional_occupations/(intermediate_occupations+routine_manual_occupations+never_worked_long_term_unemployed+higher_managerial_administrative_professional_occupations),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Higher_Managerial")+theme_classic()
+p12=ggplot(PanelLong,aes(x=year,y=higher_managerial_administrative_professional_occupations/(intermediate_occupations+routine_manual_occupations+never_worked_long_term_unemployed+higher_managerial_administrative_professional_occupations),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Higher_Managerial")+theme_classic()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
 p13=ggplot(PanelLong,aes(x=year,y=never_worked_long_term_unemployed/(intermediate_occupations+routine_manual_occupations+never_worked_long_term_unemployed+higher_managerial_administrative_professional_occupations),colour=location))+geom_line()+ylab("%Unemployed")+theme_light()
-p14=ggplot(PanelLong,aes(x=year,y=never_worked_long_term_unemployed/(intermediate_occupations+routine_manual_occupations+never_worked_long_term_unemployed+higher_managerial_administrative_professional_occupations),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Unemployed")+theme_classic()
+p14=ggplot(PanelLong,aes(x=year,y=never_worked_long_term_unemployed/(intermediate_occupations+routine_manual_occupations+never_worked_long_term_unemployed+higher_managerial_administrative_professional_occupations),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Unemployed")+theme_classic()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
 (p2/p1)|(p10/p9)|(p12/p11)|(p14/p13)
 ```
 
@@ -42,13 +44,13 @@ Could be granger causal? Right to Buy -\> Lag-2Coucnil_tenure- -\> Lag-1Owner_te
 #| fig-width: 12
 #| fig-height: 8
 p3=ggplot(PanelLong,aes(x=year,y=local_authority_etc/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=location))+geom_line()+ylab("%LocalAuthority")+theme_light()
-p4=ggplot(PanelLong,aes(x=year,y=local_authority_etc/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%LocalAuthority")+theme_classic()
+p4=ggplot(PanelLong,aes(x=year,y=local_authority_etc/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%LocalAuthority")+theme_classic()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
 p5=ggplot(PanelLong,aes(x=year,y=owner_occupied/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=location))+geom_line()+ylab("%Owner_occupied")+theme_light()
-p6=ggplot(PanelLong,aes(x=year,y=owner_occupied/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Owner_occupied")+theme_classic()
+p6=ggplot(PanelLong,aes(x=year,y=owner_occupied/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%Owner_occupied")+theme_classic()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
 p7=ggplot(PanelLong,aes(x=year,y=(other_rented+other_tenures)/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=location))+geom_line()+
   ylab("%other_rented+tenures")+theme_light()
 p8=ggplot(PanelLong,aes(x=year,y=(other_rented+other_tenures)/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=factor(gentrified)))+
-stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%other_rented+tenures")+theme_classic()
+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%other_rented+tenures")+theme_classic()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
 (p4/p3)|(p6/p5)|(p8/p7)
 ```
 
@@ -60,11 +62,11 @@ stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%other_rented+tenures")+t
 #| fig-width: 12
 #| fig-height: 8
 p16=ggplot(LongPanelPropj,aes(x=year,y=BornUkP,colour=location))+geom_line()+ylab("%BornUK")+theme_light()
-p17=ggplot(LongPanelPropj,aes(x=year,y=BornUkP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%BornUK")+theme_classic()
+p17=ggplot(LongPanelPropj,aes(x=year,y=BornUkP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%BornUK")+theme_classic()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
 p19=ggplot(LongPanelPropj,aes(x=year,y=BornEuropeP,colour=location))+geom_line()+ylab("%BornEurope")+theme_light()
-p20=ggplot(LongPanelPropj,aes(x=year,y=BornEuropeP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%BornEurope")+theme_classic()
+p20=ggplot(LongPanelPropj,aes(x=year,y=BornEuropeP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%BornEurope")+theme_classic()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
 p21=ggplot(LongPanelPropj,aes(x=year,y=BornRestP,colour=location))+geom_line()+ylab("%BornRest")+theme_light()
-p22=ggplot(LongPanelPropj,aes(x=year,y=BornRestP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%BornRest")+theme_classic()
+p22=ggplot(LongPanelPropj,aes(x=year,y=BornRestP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%BornRest")+theme_classic()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
 (p17/p16)|(p20/p19)|(p22/p21)
 ```
 
@@ -394,6 +396,8 @@ ggraph(g, layout = "stress") +
 
 # Part 3 What if? approximate counterfactuals with first differences
 
+## Using First Differences allows one to remove time invariant unobservables and baselines and use changes in the neighbouring control wards as counterfactuals to what would have happened in Quays and Ancoats without the structural change. Robust to general UK trends such as immigration or Covid by exploiting within ward variation over time.Gap between group means can be interpreted as a simple DiD estimate for a particular period.
+
 ```{r}
 LongPanelPropj <- LongPanelPropj |> 
   group_by(location) |> 
@@ -411,9 +415,9 @@ LongPanelPropj <- LongPanelPropj |>
 ```{r}
 #| fig-width: 16
 #| fig-height: 8
-p17=ggplot(LongPanelPropj,aes(x=year,y=BornUkP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%BornUK")+theme_light()
-p20=ggplot(LongPanelPropj,aes(x=year,y=BornEuropeP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%BornEurope")+theme_light()
-p22=ggplot(LongPanelPropj,aes(x=year,y=BornRestP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%BornRest")+theme_light()
+p17=ggplot(LongPanelPropj,aes(x=year,y=BornUkP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%BornUK")+theme_light()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
+p20=ggplot(LongPanelPropj,aes(x=year,y=BornEuropeP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%BornEurope")+theme_light()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
+p22=ggplot(LongPanelPropj,aes(x=year,y=BornRestP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%BornRest")+theme_light()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
 p17|p20
 p22
 ```
@@ -421,18 +425,29 @@ p22
 ```{r}
 #| fig-width: 16
 #| fig-height: 8
-p17=ggplot(LongPanelPropj,aes(x=year,y=GraduateP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%Grad")+theme_light()
-p20=ggplot(LongPanelPropj,aes(x=year,y=manualP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%ManualW")+theme_light()
-p22=ggplot(LongPanelPropj,aes(x=year,y=unemployedP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%Unemployed")+theme_light()
+p17=ggplot(LongPanelPropj,aes(x=year,y=GraduateP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%Grad")+theme_light()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
+p20=ggplot(LongPanelPropj,aes(x=year,y=manualP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%ManualW")+theme_light()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
+p22=ggplot(LongPanelPropj,aes(x=year,y=unemployedP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%Unemployed")+theme_light()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
 p17|p20
 p22
 ```
+
 ```{r}
 #| fig-width: 16
 #| fig-height: 8
-p17=ggplot(LongPanelPropj,aes(x=year,y=owner_occupiedP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%Owner_Occupied")+theme_light()
-p20=ggplot(LongPanelPropj,aes(x=year,y=otherrented_tenuresP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%Rented_and_other")+theme_light()
-p22=ggplot(LongPanelPropj,aes(x=year,y=local_authority_etcP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%LAuthorityHousing")+theme_light()
+p17=ggplot(LongPanelPropj,aes(x=year,y=intermediate_occupationsP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%Intermidiate_occupations")+theme_light()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
+p20=ggplot(LongPanelPropj,aes(x=year,y=HighManegmentP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%HighManagement")+theme_light()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
+p17|p20
+```
+
+```{r}
+#| fig-width: 16
+#| fig-height: 8
+p17=ggplot(LongPanelPropj,aes(x=year,y=owner_occupiedP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%Owner_Occupied")+theme_light()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
+p20=ggplot(LongPanelPropj,aes(x=year,y=otherrented_tenuresP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%Rented_and_other")+theme_light()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
+p22=ggplot(LongPanelPropj,aes(x=year,y=local_authority_etcP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+ylab("10_year_Change_%LAuthorityHousing")+theme_light()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
 p17|p20
 p22
 ```
+
+## ~Across indicators it seems that the 1991-2001 gap has been a pivotal moment of divergence between the two groups corresponding to both the services boom and regeneration efforts by the GMP and local councils.This notably slightly misalligns with the ball mapper results which instead separate out ancoats and quays from the rest of the pack around 2011-2021. This however seems largely driven by a drop in owner occupied housing proportion between 2000-2010s and a renting boom happening around the same time. Therefore something interesting is at play - an increase in highly educated worker share preceded a renting boom and a relative drop in owner occupied housing. Regeneration may have slightly preceded gentrification indeed the decrease in unemployment relative to its neighbors also happens in the 2001 census period.~
