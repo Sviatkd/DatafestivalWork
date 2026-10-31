@@ -6,7 +6,7 @@ format: pptx
 
 ## Definition
 
-"Gentrification is a process whereby the urban working class and poor are expelled from their districts and replaced by more affluent residents. Its drivers are structural — the policies and planning frameworks of the local state, and the tendency of capital to close rent gaps. It is, as the geographer Neil Smith put it, a “global urban strategy”.[\[10\]](https://www.common-wealth.org/interactive/the-greater-manchester-gentrification-index#fn) To live in a neighbourhood being gentrified is to experience rent rises, the destruction of community and ultimately displacement. Yet it is often something that is difficult to quantify and track."The Greater Manchester Gentrification Index (Common Wealth)
+~"Gentrification\ is\ a\ process\ whereby\ the\ urban\ working\ class\ and\ poor\ are\ expelled\ from\ their\ districts\ and\ replaced\ by\ more\ affluent\ residents.\ Its\ drivers\ are\ structural\ —\ the\ policies\ and\ planning\ frameworks\ of\ the\ local\ state,\ and\ the\ tendency\ of\ capital\ to\ close\ rent\ gaps.\ It\ is,\ as\ the\ geographer\ Neil\ Smith\ put\ it,\ a\ “global\ urban\ strategy”.[\[10\]](https://www.common-wealth.org/interactive/the-greater-manchester-gentrification-index#fn)\ To\ live\ in\ a\ neighbourhood\ being\ gentrified\ is\ to\ experience\ rent\ rises,\ the\ destruction\ of\ community\ and\ ultimately\ displacement.\ Yet\ it\ is\ often\ something\ that\ is\ difficult\ to\ quantify\ and\ track."The\ Greater\ Manchester\ Gentrification\ Index\ (Common\ Wealth)~
 
 # Part 1 Univariate Visuals
 
@@ -75,8 +75,8 @@ p22=ggplot(LongPanelPropj,aes(x=year,y=BornRestP,colour=factor(gentrified)))+sta
 ^~Note that ancoats migrates from one ball to the next and eventually ends up in the high Grad% similiar housing market makeup alongside the quays by 2021. Note that on housing market makeup ancoats is most frequently similiar to chettam and quays to kersal. Note especially that in 1971 Quays had a housing market quite similiar to chettam and ancoats in 2011 and 2021 somewhat defying the trend~^
 
 ```{r}
-#| fig-width: 18
-#| fig-height: 10
+#| fig-width: 22
+#| fig-height: 14
 #Simon Rudkin Didn't sponsor this I promise, i just found his posters very pretty and wanted to try and make some too#
 library(BallMapper)
 set.seed(123)
@@ -119,16 +119,16 @@ g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FA
 ggraph(g, layout = "stress") +
   geom_edge_link(alpha = 0.8, color = "gray60") +
   geom_node_point(aes(size = size, color = coloring)) +
-  geom_node_text(aes(label = label), repel = TRUE, size = 3.5, color = "black") +
+  geom_node_text(aes(label = label), repel = TRUE, size = 4.5, color = "black") +
   scale_color_viridis_c(option="D") +
-  theme_light() +
+  theme_void() +
   labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
-       color = "%Graduates", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
+       color = "%Graduates", size = "Ball Size(number of points)") + scale_size_continuous(range = c(8, 16))
 ```
 
 ```{r}
-#| fig-width: 18
-#| fig-height: 10
+#| fig-width: 22
+#| fig-height: 14
 set.seed(123)
 values = LongPanelPropj$BornUkP
 points =  LongPanelPropj |> select(owner_occupiedP,local_authority_etcP,otherrented_tenuresP)
@@ -165,18 +165,18 @@ g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FA
 ggraph(g, layout = "stress") +
   geom_edge_link(alpha = 0.8, color = "gray60") +
   geom_node_point(aes(size = size, color = coloring)) +
-  geom_node_text(aes(label = label), repel = TRUE, size = 3.5, color = "black") +
+  geom_node_text(aes(label = label), repel = TRUE, size = 4.5, color = "black") +
  scale_color_gradient(low="darkblue",high="orange") +
-  theme_light() +
+  theme_void() +
   labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
-       color = "%BornUK", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
+       color = "%BornUK", size = "Ball Size(number of points)") + scale_size_continuous(range = c(8, 16))
 ```
 
 ~Ancoats and Quays ended up being slightly(about 2%) more european born given their housing makeup but as obvious from the graph the difference to other areas and times is very minor around 1 and 2 percent. Gentrification was associated with a slightly larger increase in european migration but the difference is practically negligible~
 
 ```{r}
-#| fig-width: 18
-#| fig-height: 10
+#| fig-width: 22
+#| fig-height: 14
 set.seed(123)
 values = LongPanelPropj$BornEuropeP
 points =  LongPanelPropj |> select(owner_occupiedP,local_authority_etcP,otherrented_tenuresP)
@@ -213,18 +213,18 @@ g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FA
 ggraph(g, layout = "stress") +
   geom_edge_link(alpha = 0.8, color = "gray60") +
   geom_node_point(aes(size = size, color = coloring)) +
-  geom_node_text(aes(label = label), repel = TRUE, size = 3.5, color = "black") +
+  geom_node_text(aes(label = label), repel = TRUE, size = 4.5, color = "black") +
   scale_color_gradient(low="darkblue",high="orange") +
-  theme_light() +
+  theme_void() +
   labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
-       color = "%BornEurope", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
+       color = "%BornEurope", size = "Ball Size(number of points)") + scale_size_continuous(range = c(8, 16))
 ```
 
 ~Nice and tight yellow-orange cluster of share of those neither of european or british descent between 15-20 percent includes both gentrifying and non gentrifying areas. Descent doesn't seem to have a strong relationship with gentrification in the same way that same %Grads does~
 
 ```{r}
-#| fig-width: 18
-#| fig-height: 10
+#| fig-width: 22
+#| fig-height: 14
 set.seed(123)
 values = LongPanelPropj$BornRestP
 points =  LongPanelPropj |> select(owner_occupiedP,local_authority_etcP,otherrented_tenuresP)
@@ -258,16 +258,16 @@ g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FA
 ggraph(g, layout = "stress") +
   geom_edge_link(alpha = 0.8, color = "gray60") +
   geom_node_point(aes(size = size, color = coloring)) +
-  geom_node_text(aes(label = label), repel = TRUE, size = 3.5, color = "black") +
+  geom_node_text(aes(label = label), repel = TRUE, size = 4.5, color = "black") +
   scale_color_gradient(low="darkblue",high="orange") +
-  theme_light() +
+  theme_void() +
   labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
-       color = "%BornRest", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12)) 
+       color = "%BornRest", size = "Ball Size(number of points)") + scale_size_continuous(range = c(8, 16)) 
 ```
 
 ```{r}
-#| fig-width: 18
-#| fig-height: 10
+#| fig-width: 22
+#| fig-height: 14
 library(BallMapper)
 set.seed(123)
 values = LongPanelPropj$manualP
@@ -301,16 +301,16 @@ g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FA
 ggraph(g, layout = "stress") +
   geom_edge_link(alpha = 0.8, color = "gray60") +
   geom_node_point(aes(size = size, color = coloring)) +
-  geom_node_text(aes(label = label), repel = TRUE, size = 3.5, color = "black") +
+  geom_node_text(aes(label = label), repel = TRUE, size = 4.5, color = "black") +
   scale_color_gradient(high="orange",low="darkblue") +
-  theme_light() +
+  theme_void() +
   labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
-       color = "%ManualWork", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
+       color = "%ManualWork", size = "Ball Size(number of points)") + scale_size_continuous(range = c(8, 16))
 ```
 
 ```{r}
-#| fig-width: 18
-#| fig-height: 10
+#| fig-width: 22
+#| fig-height: 14
 library(BallMapper)
 set.seed(123)
 values = LongPanelPropj$HighManegmentP
@@ -344,16 +344,16 @@ g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FA
 ggraph(g, layout = "stress") +
   geom_edge_link(alpha = 0.8, color = "gray60") +
   geom_node_point(aes(size = size, color = coloring)) +
-  geom_node_text(aes(label = label), repel = TRUE, size = 3.5, color = "black") +
+  geom_node_text(aes(label = label), repel = TRUE, size = 4.5, color = "black") +
   scale_color_gradient(high="orange",low="darkblue") +
-  theme_light() +
+  theme_void() +
   labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
-       color = "%HighManagerial", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
+       color = "%HighManagerial", size = "Ball Size(number of points)") + scale_size_continuous(range = c(8, 16))
 ```
 
 ```{r}
-#| fig-width: 18
-#| fig-height: 10
+#| fig-width: 22
+#| fig-height: 14
 library(BallMapper)
 set.seed(123)
 values = LongPanelPropj$unemployedP
@@ -387,11 +387,11 @@ g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FA
 ggraph(g, layout = "stress") +
   geom_edge_link(alpha = 0.8, color = "gray60") +
   geom_node_point(aes(size = size, color = coloring)) +
-  geom_node_text(aes(label = label), repel = TRUE, size = 3.5, color = "black") +
+  geom_node_text(aes(label = label), repel = TRUE, size = 4.5, color = "black") +
   scale_color_gradient(high="red",low="darkblue") +
-  theme_light() +
+  theme_void() +
   labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
-       color = "%Unemployed", size = "Ball Size(number of points)") + scale_size_continuous(range = c(6, 12))
+       color = "%Unemployed", size = "Ball Size(number of points)") + scale_size_continuous(range = c(8, 16))
 ```
 
 # Part 3 What if? approximate counterfactuals with first differences
