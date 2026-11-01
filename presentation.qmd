@@ -6,15 +6,15 @@ format: pptx
 
 ## Definition
 
-~"Gentrification\ is\ a\ process\ whereby\ the\ urban\ working\ class\ and\ poor\ are\ expelled\ from\ their\ districts\ and\ replaced\ by\ more\ affluent\ residents.\ Its\ drivers\ are\ structural\ —\ the\ policies\ and\ planning\ frameworks\ of\ the\ local\ state,\ and\ the\ tendency\ of\ capital\ to\ close\ rent\ gaps.\ It\ is,\ as\ the\ geographer\ Neil\ Smith\ put\ it,\ a\ “global\ urban\ strategy”.[\[10\]](https://www.common-wealth.org/interactive/the-greater-manchester-gentrification-index#fn)\ To\ live\ in\ a\ neighbourhood\ being\ gentrified\ is\ to\ experience\ rent\ rises,\ the\ destruction\ of\ community\ and\ ultimately\ displacement.\ Yet\ it\ is\ often\ something\ that\ is\ difficult\ to\ quantify\ and\ track."The\ Greater\ Manchester\ Gentrification\ Index\ (Common\ Wealth)~
+~"Gentrification is a process whereby the urban working class and poor are expelled from their districts and replaced by more affluent residents. Its drivers are structural — the policies and planning frameworks of the local state, and the tendency of capital to close rent gaps. It is, as the geographer Neil Smith put it, a “global urban strategy”.[\[10\]](https://www.common-wealth.org/interactive/the-greater-manchester-gentrification-index#fn) To live in a neighbourhood being gentrified is to experience rent rises, the destruction of community and ultimately displacement. Yet it is often something that is difficult to quantify and track."The Greater Manchester Gentrification Index (Common Wealth)~
 
 # Part 1 Univariate Visuals
 
 ## Labour Market Makeup and Gentrification
 
 ```{r}
-#| fig-width: 16
-#| fig-height: 8
+#| fig-width: 22
+#| fig-height: 12
 library(readr)
 library(janitor)
 library(tidyverse)
@@ -41,8 +41,8 @@ p14=ggplot(PanelLong,aes(x=year,y=never_worked_long_term_unemployed/(intermediat
 Could be granger causal? Right to Buy -\> Lag-2Coucnil_tenure- -\> Lag-1Owner_tenure(+) -\>Renting Boom
 
 ```{r}
-#| fig-width: 12
-#| fig-height: 8
+#| fig-width: 16
+#| fig-height: 10
 p3=ggplot(PanelLong,aes(x=year,y=local_authority_etc/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=location))+geom_line()+ylab("%LocalAuthority")+theme_light()
 p4=ggplot(PanelLong,aes(x=year,y=local_authority_etc/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%LocalAuthority")+theme_classic()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
 p5=ggplot(PanelLong,aes(x=year,y=owner_occupied/(owner_occupied+other_rented+other_tenures+local_authority_etc),colour=location))+geom_line()+ylab("%Owner_occupied")+theme_light()
@@ -59,8 +59,8 @@ stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%other_rented+tenures")+t
 ~Housing Makeup and share of those born in UK don't seem to be that strongly associated with both groups experiencing similiar migration patterns with a notable exception of Europeans with notably parallel trends~
 
 ```{r}
-#| fig-width: 12
-#| fig-height: 8
+#| fig-width: 16
+#| fig-height: 10
 p16=ggplot(LongPanelPropj,aes(x=year,y=BornUkP,colour=location))+geom_line()+ylab("%BornUK")+theme_light()
 p17=ggplot(LongPanelPropj,aes(x=year,y=BornUkP,colour=factor(gentrified)))+stat_summary(fun=mean,geom="line")+geom_jitter()+ylab("%BornUK")+theme_classic()+scale_color_discrete(name = "Group",labels = c("Neighbours","Historically gentrified"))+stat_summary(fun=mean,geom="point")
 p19=ggplot(LongPanelPropj,aes(x=year,y=BornEuropeP,colour=location))+geom_line()+ylab("%BornEurope")+theme_light()
@@ -358,8 +358,7 @@ library(BallMapper)
 set.seed(123)
 values = LongPanelPropj$unemployedP
 points =  LongPanelPropj |> select(owner_occupiedP,local_authority_etcP,otherrented_tenuresP)
-ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.01)
-ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17) #epsilon 0.17 seems to preserve the complexity in the best way
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.17)
 ballassign = ball$points_covered_by_landmarks
 # 1. Number of nodes
 n_nodes <- length(ball$coloring)
@@ -392,6 +391,134 @@ ggraph(g, layout = "stress") +
   theme_void() +
   labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on housing market makeup within +-17 percentage points",
        color = "%Unemployed", size = "Ball Size(number of points)") + scale_size_continuous(range = c(8, 16))
+```
+
+```{r}
+#| fig-width: 22
+#| fig-height: 14
+library(BallMapper)
+set.seed(123)
+values = LongPanelPropj$local_authority_etcP
+points =  LongPanelPropj |> select(intermediate_occupationsP,manualP,HighManegmentP)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.0706832)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.127763)
+ballassign = ball$points_covered_by_landmarks
+# 1. Number of nodes
+n_nodes <- length(ball$coloring)
+
+# 2. Calculate ball sizes from your ballassign indices
+ball_sizes <- sapply(ball$points_covered_by_landmarks, length)
+
+# 3. Generate unit-time labels for each ball
+node_labels <- sapply(ball$points_covered_by_landmarks, function(indices) {
+  subset_data <- PanelLong[indices, ]
+  paste0(subset_data$location, "-", subset_data$year, collapse = "\n")
+})
+
+# 4. Build the vertices data frame safely
+vertices_df <- data.frame(
+  name = 1:n_nodes,
+  label = node_labels,
+  coloring = ball$coloring,
+  size = ball_sizes
+)
+
+# 5. Create the igraph object
+g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FALSE)
+#Though I did customise the plot below though#
+ggraph(g, layout = "stress") +
+  geom_edge_link(alpha = 0.8, color = "gray60") +
+  geom_node_point(aes(size = size, color = coloring)) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 4.5, color = "black") +
+  scale_color_gradient(high="green",low="red") +
+  theme_void() +
+  labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on employment types within +-12.8 percentage points(1SD)",
+       color = "%local_authority_etc", size = "Ball Size(number of points)") + scale_size_continuous(range = c(8, 16))
+```
+
+```{r}
+#| fig-width: 22
+#| fig-height: 14
+library(BallMapper)
+set.seed(123)
+values = LongPanelPropj$otherrented_tenuresP
+points =  LongPanelPropj |> select(intermediate_occupationsP,manualP,HighManegmentP)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.0706832)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.127763)
+ballassign = ball$points_covered_by_landmarks
+# 1. Number of nodes
+n_nodes <- length(ball$coloring)
+
+# 2. Calculate ball sizes from your ballassign indices
+ball_sizes <- sapply(ball$points_covered_by_landmarks, length)
+
+# 3. Generate unit-time labels for each ball
+node_labels <- sapply(ball$points_covered_by_landmarks, function(indices) {
+  subset_data <- PanelLong[indices, ]
+  paste0(subset_data$location, "-", subset_data$year, collapse = "\n")
+})
+
+# 4. Build the vertices data frame safely
+vertices_df <- data.frame(
+  name = 1:n_nodes,
+  label = node_labels,
+  coloring = ball$coloring,
+  size = ball_sizes
+)
+
+# 5. Create the igraph object
+g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FALSE)
+#Though I did customise the plot below though#
+ggraph(g, layout = "stress") +
+  geom_edge_link(alpha = 0.8, color = "gray60") +
+  geom_node_point(aes(size = size, color = coloring)) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 4.5, color = "black") +
+  scale_color_gradient(high="green",low="red") +
+  theme_void() +
+  labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on employment types within +-12.8 percentage points(1SD)",
+       color = "%other_rented", size = "Ball Size(number of points)") + scale_size_continuous(range = c(8, 16))
+```
+```{r}
+#| fig-width: 22
+#| fig-height: 14
+library(BallMapper)
+set.seed(123)
+values = LongPanelPropj$GraduateP
+points =  LongPanelPropj |> select(intermediate_occupationsP,manualP,HighManegmentP)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.0706832)
+ball = BallMapper::BallMapper(as.data.frame(points),as.data.frame(values),epsilon = 0.127763)
+ballassign = ball$points_covered_by_landmarks
+# 1. Number of nodes
+n_nodes <- length(ball$coloring)
+
+# 2. Calculate ball sizes from your ballassign indices
+ball_sizes <- sapply(ball$points_covered_by_landmarks, length)
+
+# 3. Generate unit-time labels for each ball
+node_labels <- sapply(ball$points_covered_by_landmarks, function(indices) {
+  subset_data <- PanelLong[indices, ]
+  paste0(subset_data$location, "-", subset_data$year, collapse = "\n")
+})
+
+# 4. Build the vertices data frame safely
+vertices_df <- data.frame(
+  name = 1:n_nodes,
+  label = node_labels,
+  coloring = ball$coloring,
+  size = ball_sizes
+)
+
+# 5. Create the igraph object
+g <- graph_from_data_frame(d = ball$edges, vertices = vertices_df, directed = FALSE)
+#Though I did customise the plot below though#
+ggraph(g, layout = "stress") +
+  geom_edge_link(alpha = 0.8, color = "gray60") +
+  geom_node_point(aes(size = size, color = coloring)) +
+  geom_node_text(aes(label = label), repel = TRUE, size = 4.5, color = "black") +
+  scale_color_gradient(high="green",low="red") +
+  theme_void() +
+  labs(title = "Ball Mapper Graph of gentrification - points in the same ball are closest on employment types within +-12.8 percentage points(1SD)",
+       color = "%Graduate", size = "Ball Size(number of points)") + scale_size_continuous(range = c(8, 16))
 ```
 
 # Part 3 What if? approximate counterfactuals with first differences
